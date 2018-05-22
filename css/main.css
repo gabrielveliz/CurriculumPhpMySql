@@ -1,0 +1,493 @@
+@import url("normalize.css");
+@import url("iconos.css");
+
+*
+{
+	padding: 0;
+	margin: 0;
+	font-family: "Tahoma", "Geneva", sans-serif;
+}
+
+
+body
+{
+    background-color: #E0E0E0;
+    box-sizing: 100%;
+}
+.FotoPerfil
+{
+    
+    border-radius: 300px;
+    width: 60%;
+    border: solid 2px rgba(0,150,136,0.3);
+    margin: 2% 20% 2% 20%;
+}
+.titu > h1
+{
+	text-align: center;
+	text-decoration: underline;
+
+}
+
+
+.contenedor
+{
+	color: white;
+	text-shadow: 3px 3px 4px black;
+}
+
+
+.titulo
+{
+	font-size: 50px;
+	color: white;
+	text-shadow: 2px 2px 4px black;
+
+}
+.por
+{
+	padding: 20px;
+}
+
+.contenedor2
+{
+	width: 100%;
+	padding: 0;
+	box-sizing: 100%;
+}
+.conte1,.pie1
+{
+	background-image: url(../img/portada.png);
+	background-attachment: fixed;
+}
+.conte2,.pie2
+{
+	background-image: url(../img/Portada-Curriculum.png);
+	background-attachment: fixed;
+}
+.conte3,.pie3
+{
+	background-image: url(../img/Portada-soy.png);
+	background-attachment: fixed;
+}
+.conte4,.pie4
+{
+	background-image: url(../img/Portada-Contacto.png);
+	background-attachment: fixed;
+}
+
+.ContQuien
+{
+	width: 100%;
+	box-sizing: 100%;
+	padding: 10px;
+
+}
+
+.fami
+{
+	width: 300px;
+	border-radius: 10px;
+	margin: auto;
+	display: block;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+.fami:hover {opacity: 0.7;}
+.yo
+{
+	margin:auto;
+	display: block;
+	background-color: white;
+	box-shadow: 3px 3px 10px #00B27F;
+	border-radius: 10px;
+	padding: 20px;
+}
+.yo:hover
+{
+	box-shadow: 3px 3px 10px #FF5200;
+}
+.yo p
+{
+	text-align: center;
+	color: black;
+	text-decoration: underline;
+}
+.CurFon
+{
+	background-color: white;
+	box-shadow: 3px 3px 10px #00B27F;
+	margin: 10px auto;
+	border-radius: 5px;
+	padding: 20px;
+	float: left;
+}
+.CurFon:hover
+{
+	box-shadow: 3px 3px 10px #FF5200;
+}
+li
+{
+	color: #009688;
+}
+.lista
+{
+	color: black;
+}
+.ContSeg
+{	
+	width: 100%;
+	box-sizing: 100%;
+	background-color: #E0E0E0;
+}
+
+.Cono
+{
+	background-color: white;
+	box-shadow: 3px 3px 10px #00B27F;
+	margin:  1% auto;
+	margin-bottom: 2%;
+	padding-left: 20px;
+	box-sizing: 100%;
+	
+}
+.Cono:hover
+{
+	box-shadow: 3px 3px 10px #FF5200;
+}
+.ImgCur
+{
+	box-shadow: 2px 2px 1px 1px rgba(0,0,0,0.6);
+	border-radius: 10px;
+	display: block;
+	margin: 0px auto;
+}
+.udla
+{
+	width: 200px;
+}
+.havas,.cpech
+{
+	width: 150px;
+}
+.tquila
+{
+	width: 150px;
+}
+.mv,.fach,.ipm
+{
+	width: 100px;
+}
+
+.Cono p
+{
+	text-align: center;
+	font-size: 30px;
+	color: black;
+}
+.Cono ul
+{
+	padding-left: 40px;
+	font-size: 20px;
+}
+.Cono ul li
+{
+	color: #009688;
+}
+.Cono ul li .lista
+{
+	color: rgba(0,0,0,0.8);
+}
+.ImgCon
+{
+	width: 200px;
+	border-radius: 100px;
+	border:2px solid #00B27F;
+	display: block;
+	margin: 1% auto;
+}
+
+.pie
+{
+
+	box-sizing: 100%;
+	
+	width: 100%;
+	color: white;
+}
+.redes
+{
+	
+	margin: 0 auto;
+}
+.icono
+{
+	
+	font-size: 50px;
+	
+	border-radius: 50px;
+	margin: 0 auto;
+	text-shadow: 3px 3px 10px #00B27F;
+}
+.icono:hover
+{
+	border-radius: 0;
+	font-size: 51px;
+	text-shadow: 3px 3px 10px #FF5200;
+}
+.redes a
+{
+	color: white;
+}
+.redes a:hover
+{
+	text-decoration: none;
+}
+
+
+/*
+Formulario
+*/
+
+.formulario
+{
+	display: block;
+	margin: auto;
+	margin-bottom: 20px;
+
+	background-color: rgba(0,0,0,0.7);
+	border-radius: 5px;
+	box-sizing: 100%;
+	padding: 2%;
+	box-shadow: 3px 3px 10px black;
+}
+.ImgContact
+{
+width: 250px;
+display: block;
+margin: auto;
+border-radius: 100%;
+}
+.formulario h4
+{
+	color: white;
+
+}
+.formulario label
+{
+	color: white;
+	font-size: 20px;
+}
+#ForTex1
+{
+	border: 0px solid black;
+}
+textarea
+{
+	height:100px;
+}
+
+
+header
+{
+	width: 100%;
+	box-shadow: 3px 3px 10px #00B27F;
+	background: white;
+}
+
+header:hover
+{
+	box-shadow: 3px 3px 10px #FF5200;
+}
+header nav
+{
+	width: 100%;
+	max-width: 1000px;
+	margin: 20px auto;
+	margin-top: 0px;
+	
+}
+.menu_bar
+{
+	display: none;
+}
+header nav ul
+{
+	overflow: hidden;
+	list-style: none;
+	margin-left: 20%;
+}
+header nav ul li
+{
+	float: left;
+}
+
+header nav ul li a
+{
+	
+	color: #424242;
+	padding: 20px;
+	display: block;
+	text-decoration: none;
+}
+header nav ul li span
+{
+	margin-right: 10px;
+}
+
+header nav ul li a:hover
+{
+	text-decoration: none;
+	background-color: #009688;
+	color: white;
+}
+meter
+{
+	padding-left: 10px;
+}
+
+/* comienzo de modal */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+/* Caption of Modal Image */
+.caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+/* Add Animation */
+.modal-content, .caption {    
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)} 
+    to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+    .modal-content {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:800px) {
+	
+	header nav
+	{
+		width: 80%;
+		height: 100%;
+		margin: 0;
+		position: fixed;
+		z-index: 1;
+		background-color: white;
+		left: -100%;
+	}
+	
+	header nav ul
+	{
+		margin-left: 0;
+	}
+	header nav ul li
+	{
+		display: block;
+		float: none;
+		border-bottom: rgba(0,0,0,0.3) solid 1px;
+	}
+	.menu_bar
+	{
+		display: block;
+		width: 100%;
+		background-color:white;
+		
+	}
+	.menu_bar .bt-menu
+	{
+		display: block;
+		padding: 20px;
+		text-decoration: none;
+		color: #424242;
+		-webkit-box-sizing:border-box;
+		-moz-box-sizing:border-box;
+		box-sizing:border-box; 
+		font-size: 25px;
+	}
+
+	.menu_bar span
+	{
+		float: right;
+		font-size: 30px;
+	}
+
+		meter
+	{
+		padding-left: 1px;
+
+	}
+	.bor
+	{
+		display: none;
+	}
+	.fami
+	{
+		width: 200px;
+	}
+	.ImgContact
+	{
+	width: 180px;
+	}
+}

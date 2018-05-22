@@ -346,7 +346,39 @@ meter
 {
 	padding-left: 10px;
 }
+.ingresar
+{	
+	display: block;
+	margin: 0px auto;
+	margin-top: 6%;
+	border: 1px black solid;
+	padding: 4%;
+	background-color: rgba(0,0,0,0.8);
+	border-radius: 20px;
+}
+.ingresar label
+{
+	color: white;
+	text-shadow: 2px 2px 2px black;
+	font-size: 20px;
+}
+.ingresar h2,.ingresar p
+{
+	color: white;
+	text-align: center;
+	
+}
+.ingresar .btn
+{	
+	display: block;
+	margin: auto;
+}
 
+.BodyIngresar
+{
+	background-image: url(../img/fondo-ingresar.jpg);
+	background-attachment: fixed;
+}
 /* comienzo de modal */
 .modal {
     display: none; /* Hidden by default */

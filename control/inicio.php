@@ -30,7 +30,7 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Panel de Control - Gabriel Veliz</title>
+  <title>Modificar Inicio - Gabriel Veliz</title>
 
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
@@ -144,8 +144,8 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MENU</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="index.php"><i class="fa icon-home2"></i> <span>Administrar</span></a></li>
-        <li><a href="inicio.php"><i class="fa icon-pencil"></i> <span>Inicio</span></a></li>
+        <li><a href="index.php"><i class="fa icon-home2"></i> <span>Administrar</span></a></li>
+        <li class="active"><a href="inicio.php"><i class="fa icon-pencil"></i> <span>Inicio</span></a></li>
         <li><a href="curriculum.php"><i class="fa icon-pencil"></i> <span>Curriculum</span></a></li>
         <li><a href="gv.php"><i class="fa icon-pencil"></i> <span>Sobre Mi</span></a></li>
         <li><a href="contacto.php"><i class="fa icon-pencil"></i> <span>Contacto</span></a></li>
@@ -168,6 +168,8 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
       <!--------------------------
         | Your Page Content Here |
         -------------------------->
+        <h1>Modificar Inicio</h1>
+         
 
     </section>
     <!-- /.content -->

@@ -14,7 +14,19 @@
   <!-- Place favicon.ico in the root directory -->
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
+
+<style>
+  .form-control-feedback {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+.form-control {
+  padding-left: 30px!important;
+}
+</style>
 </head>
 
 <body class="BodyIngresar">
@@ -22,19 +34,25 @@
     <h2>Administracion</h2>
     <p>Solo Personal Autorizado</p>
  <form action="conecta/valida_usuario.php" method="post">
-  <div class="form-group">
-    <label for="exampleInputEmail1">Usuario</label>
-    <input type="text" name="usuario" class="form-control" id="exampleInputEmail1"  placeholder="Ingresar Usuario..." required="">
+  
     
+    <label for="exampleInputEmail1">Usuario</label>
+  <div class="form-group has-feedback">
+  <i class="fa fa-user form-control-feedback"></i>
+    <input type="text" name="usuario" class="form-control" id="exampleInputEmail1"  placeholder="Ingresar Usuario..." required="">
   </div>
-  <div class="form-group">
+
     <label for="exampleInputPassword1">Contraseña</label>
+    <div class="form-group has-feedback">
+  <i class="fas fa-key form-control-feedback"></i>
     <input type="password" name="pas" class="form-control" id="exampleInputPassword1" placeholder="Ingresar Contraseña..." required="">
   </div>
   <div class="form-group form-check">
    
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">Entrar</button>
+  <br>
+ <center><a href="index.php">Regresar al Sitio Web Principal</a></center>
 </form>
 </div>
 

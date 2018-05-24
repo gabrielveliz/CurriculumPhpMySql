@@ -34,7 +34,7 @@
          
           <ul>
 
-            <li><a href="index.php" title="Inicio"><span class="icon-home"></span> Inicio</a></li>
+            <li><a href="index.php" title="Inicio"><span class="icon-home3"></span> Inicio</a></li>
 
             <li><a href="curriculum.php" title="Curriculum"><span class="icon-file-text2"></span>Curriculum</a></li>
 
@@ -42,6 +42,7 @@
 
             <li><a href="contacto.php" title="Contacto"><span class="icon-phone"></span>Contacto</a></li>
             <li><a href="Curriculum-Vitae-Gabriel-Veliz.pdf" target="_blank" title="Curriculum Vitae"><span class="icon-cloud-download"></span>Descargar</a></li>
+            <li><a href="Ingresar.php" title="Ingresar"><span class="icon-enter"></span>Ingresar</a></li>
           </ul>
         </nav>
       </header><!-- /header -->
@@ -128,7 +129,7 @@
                   <span class="icon-github icono"></span>
                 </a>
                 <a href="mailto:contacto@gabrielveliz.cl" title="Enviar Correo">
-                  <span class="icon-envelope icono" ></span>
+                  <span class="icon-mail3 icono" ></span>
                 </a>
             </div>
         

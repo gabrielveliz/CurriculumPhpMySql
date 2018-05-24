@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?3g8i47');
-  src:  url('fonts/icomoon.eot?3g8i47#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?3g8i47') format('truetype'),
-    url('fonts/icomoon.woff?3g8i47') format('woff'),
-    url('fonts/icomoon.svg?3g8i47#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?ynhf0u');
+  src:  url('fonts/icomoon.eot?ynhf0u#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?ynhf0u') format('truetype'),
+    url('fonts/icomoon.woff?ynhf0u') format('woff'),
+    url('fonts/icomoon.svg?ynhf0u#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,11 +24,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-envelope:before {
+.icon-home2:before {
   content: "\e901";
 }
-.icon-home:before {
-  content: "\e900";
+.icon-home3:before {
+  content: "\e902";
+}
+.icon-pencil:before {
+  content: "\e905";
 }
 .icon-file-text2:before {
   content: "\e926";
@@ -36,11 +39,11 @@
 .icon-phone:before {
   content: "\e942";
 }
+.icon-user:before {
+  content: "\e971";
+}
 .icon-user-tie:before {
   content: "\e976";
-}
-.icon-briefcase:before {
-  content: "\e9ae";
 }
 .icon-menu:before {
   content: "\e9bd";
@@ -48,8 +51,14 @@
 .icon-cloud-download:before {
   content: "\e9c2";
 }
-.icon-facebook2:before {
-  content: "\ea91";
+.icon-enter:before {
+  content: "\ea13";
+}
+.icon-exit:before {
+  content: "\ea14";
+}
+.icon-mail3:before {
+  content: "\ea85";
 }
 .icon-github:before {
   content: "\eab0";

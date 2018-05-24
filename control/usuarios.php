@@ -103,10 +103,10 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Perfil</a>
+                  <a href="#" class="btn btn-default btn-flat icon-user-tie">Perfil</a>
                 </div>
                 <div class="pull-right">
-                  <a href="../conecta/cerrar.php" class="btn btn-default btn-flat">Cerrar Sesion</a>
+                  <a href="../conecta/cerrar.php" class="btn btn-default btn-flat icon-exit">Cerrar Sesion</a>
                 </div>
               </li>
             </ul>
@@ -139,7 +139,7 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
       </div>
 
       
-      <link rel="stylesheet" href="css/iconos.css">
+      <link rel="stylesheet" href="../css/iconos.css">
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MENU</li>

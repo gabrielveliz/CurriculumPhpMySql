@@ -313,11 +313,13 @@ header nav
 	display: none;
 }
 header nav ul
+
 {
 	overflow: hidden;
 	list-style: none;
-	margin-left: 20%;
+	margin-left: 10%;
 }
+
 header nav ul li
 {
 	float: left;
@@ -367,6 +369,16 @@ meter
 	color: white;
 	text-align: center;
 	
+}
+.ingresar a
+{
+	color: white;
+	text-decoration: none;
+}
+.ingresar a:hover
+{
+	
+	color: white;
 }
 .ingresar .btn
 {	

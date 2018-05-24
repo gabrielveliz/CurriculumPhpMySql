@@ -23,6 +23,16 @@ $resultadoTipo = $mysqli->query($consultaTipo);
 $fila2= $resultadoTipo->fetch_assoc();
 $resultadoTipoNombre=$fila2['C_Tipo'];
 
+$IdPerfil=1;
+$consultaPerfil = "SELECT * FROM t_perfil WHERE C_Id_Perfil = $IdPerfil";
+$resultadoPerfil = $mysqli->query($consultaPerfil);
+
+$filaPerfil = $resultadoPerfil->fetch_assoc();
+$NombrePerfil = $filaPerfil['C_Nombre'];
+$resulTitulo = $filaPerfil['C_Titulo_Pro'];
+$resulUniversidad = $filaPerfil['C_Unive_Pro'];
+$resulObjetivo = $filaPerfil['C_Objetivo'];
+$resultImg = $filaPerfil['C_Img_Perfil'];
 
 ?>
 <!DOCTYPE html>
@@ -40,6 +50,7 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
   <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
  <link rel="icon" type="image/png" href="img/control.png" />
 
   <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
@@ -103,10 +114,10 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Perfil</a>
+                  <a href="#" class="btn btn-default btn-flat icon-user-tie">Perfil</a>
                 </div>
                 <div class="pull-right">
-                  <a href="../conecta/cerrar.php" class="btn btn-default btn-flat">Cerrar Sesion</a>
+                  <a href="../conecta/cerrar.php" class="btn btn-default btn-flat icon-exit">Cerrar Sesion</a>
                 </div>
               </li>
             </ul>
@@ -139,7 +150,7 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
       </div>
 
       
-      <link rel="stylesheet" href="css/iconos.css">
+      <link rel="stylesheet" href="../css/iconos.css">
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MENU</li>
@@ -168,8 +179,61 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
       <!--------------------------
         | Your Page Content Here |
         -------------------------->
-        <h1>Modificar Inicio</h1>
          
+          
+            <div class="col-12 col-md-4">
+              <div >
+                <?php 
+                echo '<img class="FotoPerfil" src="data:image/jpeg;base64,'.base64_encode($resultImg).'"/>';
+                ?>
+              </div>
+            </div>
+            <div class="col-12 col-md-8 pres"><h1><?php echo $NombrePerfil ?></h1>
+              <h4><?php echo $resulTitulo ?> <br>
+              <?php echo $resulUniversidad ?></h4>
+              <hr>
+              <p>Objetivo: <br> <?php echo $resulObjetivo ?></p>
+
+            </div> <!-- fin segunda columna de la primra seccion -->
+          
+        
+        <div class="col-12 col-md-12">
+          <h1>Modificar Perfil Inicio</h1>
+        </div>
+         <form enctype="multipart/form-data" action="../conecta/EditarPerfil.php" method="post">
+  <div class="form-group co-12 col-md-12">
+    <label for="exampleFormControlFile1">Subir Imagen</label>
+    <input type="file" name="imagen" class="form-control-file" id="exampleFormControlFile1">
+  </div>
+  <div class="form-group col-12 col-md-12">
+    <label for="formGroupExampleInput">Nombre Completo</label>
+    <input type="text" class="form-control" name="nombre" maxlength="50" value="<?php echo $NombrePerfil ?>" id="nombre" placeholder="Ingresar nombre" required="">
+    <div id="cajanombre">
+    </div>
+  </div>
+  <div class="form-group col-12 col-md-6">
+    <label for="formGroupExampleInput2">Titulo Profesional</label>
+    <input type="text" class="form-control" name="titulo" maxlength="50" value="<?php echo $resulTitulo ?>" id="titulo" placeholder="Ingresar Titulo">
+    <div id="cajatitulo">
+    </div>
+  </div>
+  <div class="form-group col-12 col-md-6">
+    <label for="formGroupExampleInput2">Universidad</label>
+    <input type="text" class="form-control" maxlength="50" name="universidad" value="<?php echo $resulUniversidad ?>" id="universidad" placeholder="Ingresar Titulo">
+    <div id="cajauniversidad">
+    </div>
+  </div>
+  <div class="form-group col-12 col-md-12">
+    <label for="exampleFormControlTextarea1">Objetivo</label>
+    <textarea class="form-control" value="" maxlength="500" id="objetivo" name="objetivo" rows="3" required=""><?php echo $resulObjetivo ?></textarea>
+    <div id="cajaobjetivo">
+    </div>
+  </div>
+<div class="col-12 col-md-12">
+  <input class="btn btn-primary" type="submit"  value="Guardar">  
+</div>
+    
+</form>
 
     </section>
     <!-- /.content -->
@@ -186,6 +250,7 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
+<script src="main.js"></script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the

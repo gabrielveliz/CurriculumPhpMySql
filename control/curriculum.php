@@ -43,6 +43,7 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
  <link rel="icon" type="image/png" href="img/control.png" />
 
   <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
@@ -158,20 +159,165 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    
-
-    <!-- Main content -->
-    <section class="content container-fluid">
-
+<div class="content-wrapper">
+  <section class="content container-fluid">
       <!--------------------------
         | Your Page Content Here |
         -------------------------->
+    <div class="CurFon col-12">
+      <center><h3>Experiencia profesional</h3>
+      <button class="activar btn btn-primary" id="mostrar">Mostrar</button><button class="activar btn btn-primary" id="ocultar">Ocultar</button></center>
+      <div id="m">
 
-    </section>
-    <!-- /.content -->
-  </div>
+                      <br>
+      <?php 
+      $consultaExp = "SELECT C_Id_Laboral, C_Puesto, C_Empresa, C_Link,DATE_FORMAT(C_Fecha_I,'%d/%m/%Y'), DATE_FORMAT(C_Fecha_F,'%d/%m/%Y'), C_Img_Laboral FROM t_laboral order by C_Fecha_F Desc";
+      $resultadoExp=mysqli_query($mysqli,$consultaExp);
+      while($filaExp=mysqli_fetch_row($resultadoExp))
+      {
+
+
+        $idExp=$filaExp[0];
+        $nombre=$filaExp[1];
+        $empresa=$filaExp[2];
+        $link=$filaExp[3];
+        $fecha_i=$filaExp[4];
+        $fecha_f=$filaExp[5];
+        $imgExp=$filaExp[6];
+
+        
+?>
+
+    <div class="row colEx">
+      
+
+<?php
+        echo "
+        <div class='col-12 col-md-2'>
+        <img class='ImgCur tquila' src='data:image/jpeg;base64,".base64_encode($imgExp)."'/>
+        </div>
+        <div class='col-12 col-md-10'>
+        <p>Puesto: ".$nombre."</p>
+        
+        <p>Link: ".$link."</p>";
+        
+        echo " <p>Empresa: ".$empresa."</p>
+
+        <p>Fecha de Inicio: ".$fecha_i."</p>
+        <p>Fecha de Termino: ".$fecha_f."</p>
+        </div>
+        <div class='col-12'>
+        <br>
+          <table>
+          <center><h4>Tareas Realizadas</h4></center>
+            <thead>
+              <tr>
+                <th>Tarea</th>
+                <th>Accion</th>
+                <th>Accion</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+        ";
+        
+        $consultaDet = "SELECT * FROM t_tareas where C_Id_Laboral=$idExp";
+        $resultadoDet=mysqli_query($mysqli,$consultaDet);
+                  
+        while($filaDet=mysqli_fetch_row($resultadoDet))
+        {
+          $nombre_Det=$filaDet[1];
+          echo "
+                <tr>
+                <td>".$nombre_Det."</td>
+                <td><input class='btn btn-warning' type='submit'  value='Modificar'></td>
+                <td><input class='btn btn-danger' type='submit'  value='Eliminar'></td>
+                </tr>
+              
+          ";
+          
+          
+          
+        } //fin 2° while
+      echo "
+            </tbody>";
+         
+
+?>
+</table>
+          </div>
+<br>
+    </div> <!--Fin row  -->
+<?php
+
+      } //fin 1° while
+
+?>
+  </div> <!-- fin div m -->
+    </div> <!-- fin de <div class="CurFon col-12">  --> 
+
+
+
+
+
+    <div class="CurFon col-12">
+      <center><h3>Educacion</h3>
+      <button class="activar2 btn btn-primary" id="mostrar2">Mostrar</button><button class="activar2 btn btn-primary" id="ocultar2">Ocultar</button></center>
+      <div id="e">
+
+                      <br>
+      <?php 
+      $consultaEd = "SELECT C_Id_Educacion, C_Carrera, C_Institucion, DATE_FORMAT(C_Fecha_I,'%d/%m/%Y'), DATE_FORMAT(C_Fecha_F,'%d/%m/%Y'), C_Img_Ed FROM t_educacion order by C_Fecha_F Desc";
+      $resultadoEd=mysqli_query($mysqli,$consultaEd);
+      while($filaEd=mysqli_fetch_row($resultadoEd))
+      {
+
+
+        $nombreCa=$filaEd[1];
+        $nombreInst=$filaEd[2];
+        $fecha_i_Ed=$filaEd[3];
+        $fecha_f_Ed=$filaEd[4];
+        $imgEd=$filaEd[5];
+
+        
+?>
+
+    <div class="row colEx">
+      
+
+<?php
+        echo "
+        <div class='col-12 col-md-2'>
+        <img class='ImgCur tquila' src='data:image/jpeg;base64,".base64_encode($imgEd)."'/>
+        </div>
+        <div class='col-12 col-md-10'>
+        <p>Estudios : ".$nombreCa."</p>
+        
+        <p>Institucion: ".$nombreInst."</p>
+
+        <p>Fecha de Inicio: ".$fecha_i."</p>
+        <p>Fecha de Termino: ".$fecha_f."</p>
+        </div>
+
+    ";
+    ?>
+
+
+    </div> <!--Fin row  -->
+<?php
+      } //fin 1° while
+
+?>
+        
+      </div> <!-- fin div e -->
+    </div> <!-- fin de <div class="CurFon col-12">  --> 
+
+
+<!--------------------------
+        |  End|
+        -------------------------->
+  </section>
+</div>
   
 </div>
 <!-- ./wrapper -->
@@ -180,10 +326,13 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
 
 <!-- jQuery 3 -->
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
 <!-- Bootstrap 3.3.7 -->
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
+<script src="main.js"></script>
+
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the

@@ -6,3 +6,91 @@
     
     margin: 2% 20% 2% 20%;
 }
+
+
+.ImgCon
+{
+	width: 200px;
+	border-radius: 100px;
+	border:2px solid #00B27F;
+	display: block;
+	margin: 1% auto;
+}
+.Con
+{
+	width: 100%;
+	margin-bottom: 5%;
+	background-color: white;
+	box-shadow: 3px 3px 10px #00B27F;
+	box-sizing: 100%;
+	padding: 20px;
+	
+}
+.Con:hover
+{
+	box-shadow: 3px 3px 10px #FF5200;
+}
+
+table
+{
+	width: 100%;
+}
+td,th 
+{
+	
+	text-align: center;
+}
+.Con h3
+{
+	text-align: center;
+	text-decoration: underline;
+}
+
+.formuperfil
+{
+	padding: 10px;
+	width: 100%;
+	box-sizing: 100%;
+}
+.content
+{
+	border-bottom:1px dashed #00B27F;
+}
+
+
+.ImgCur
+{
+	box-shadow: 2px 2px 1px 1px rgba(0,0,0,0.6);
+	border-radius: 10px;
+	display: block;
+	
+}
+.udla
+{
+	width: 200px;
+}
+.havas,.cpech
+{
+	width: 150px;
+}
+.tquila
+{
+	width: 150px;
+}
+.mv,.fach,.ipm
+{
+	width: 100px;
+}
+
+td
+{
+	border-bottom:1px black solid ; 
+}
+.colEx
+{
+	background-color: White;
+	margin: 1%;
+	border-radius: 10px;
+	box-shadow: 1px 1px 3px black;
+	padding: 1%;
+}

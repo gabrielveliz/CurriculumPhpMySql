@@ -27,6 +27,14 @@ include("conec.php");
         }
         }
     }
+    else
+    {
+        
+        $editar="update t_perfil set C_Nombre='$nombre',C_Titulo_Pro='$titulo',C_Objetivo='$objetivo',C_Unive_Pro='$universidad' where C_Id_Perfil=1";
+
+         $consulta = $mysqli->query($editar);
+         header("location: ../control/inicio.php");
+    }
 
 
 

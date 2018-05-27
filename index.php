@@ -108,7 +108,7 @@ $resultImg = $fila['C_Img_Perfil'];
               echo "<p>".$nombre."<ul><table>";
 
 
-              $consultaCono2 = "SELECT * FROM t_conocimientos_detalle where C_Id_Conocimientos=$id";
+              $consultaCono2 = "SELECT * FROM t_conocimientos_detalle where C_Id_Conocimientos=$id order by C_Porcentaje desc";
               $resultadoCono2=mysqli_query($mysqli,$consultaCono2);
               
               while($filaCono2=mysqli_fetch_row($resultadoCono2))
@@ -118,7 +118,7 @@ $resultImg = $fila['C_Img_Perfil'];
                 echo "<tr><th><li><span class='lista'>".$nombre_detalle."</span></li></th>";
                 
                 if (is_null($porcentaje)) {
-                  
+                 
                 }
                 else{
                 echo "<th><meter min='0' max='100' low='20' high='50' optimum='100' value='".$porcentaje."'></meter></th>";

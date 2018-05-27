@@ -49,7 +49,7 @@ $resultImg = $filaPerfil['C_Img_Perfil'];
   <!-- Ionicons -->
   <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="dist/css/AdminLTE.css">
   <link rel="stylesheet" type="text/css" href="css/main.css">
  <link rel="icon" type="image/png" href="img/control.png" />
 
@@ -168,77 +168,240 @@ $resultImg = $filaPerfil['C_Img_Perfil'];
     <!-- /.sidebar -->
   </aside>
 
+
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper container-fluid">
     <!-- Content Header (Page header) -->
     
 
     <!-- Main content -->
-    <section class="content container-fluid">
+<section class="content container-fluid">
 
       <!--------------------------
         | Your Page Content Here |
         -------------------------->
          
-          
-            <div class="col-12 col-md-4">
-              <div >
-                <?php 
-                echo '<img class="FotoPerfil" src="data:image/jpeg;base64,'.base64_encode($resultImg).'"/>';
-                ?>
-              </div>
-            </div>
-            <div class="col-12 col-md-8 pres"><h1><?php echo $NombrePerfil ?></h1>
-              <h4><?php echo $resulTitulo ?> <br>
-              <?php echo $resulUniversidad ?></h4>
-              <hr>
-              <p>Objetivo: <br> <?php echo $resulObjetivo ?></p>
+     
 
-            </div> <!-- fin segunda columna de la primra seccion -->
-          
-        
-        <div class="col-12 col-md-12">
-          <h1>Modificar Perfil Inicio</h1>
-        </div>
-         <form enctype="multipart/form-data" action="../conecta/EditarPerfil.php" method="post">
-  <div class="form-group co-12 col-md-12">
-    <label for="exampleFormControlFile1">Subir Imagen</label>
-    <input type="file" name="imagen" class="form-control-file" id="exampleFormControlFile1">
-  </div>
-  <div class="form-group col-12 col-md-12">
-    <label for="formGroupExampleInput">Nombre Completo</label>
-    <input type="text" class="form-control" name="nombre" maxlength="50" value="<?php echo $NombrePerfil ?>" id="nombre" placeholder="Ingresar nombre" required="">
-    <div id="cajanombre">
+
+
+
+
+<div class="row"><!-- Contendedor Perfil -->
+    <div class="col-12 col-md-4">
+      <div >
+       <?php 
+        echo '<img class="FotoPerfil" src="data:image/jpeg;base64,'.base64_encode($resultImg).'"/>';
+        ?>
+      </div>
     </div>
-  </div>
-  <div class="form-group col-12 col-md-6">
-    <label for="formGroupExampleInput2">Titulo Profesional</label>
-    <input type="text" class="form-control" name="titulo" maxlength="50" value="<?php echo $resulTitulo ?>" id="titulo" placeholder="Ingresar Titulo">
-    <div id="cajatitulo">
+    <div class="col-12 col-md-8 pres"><h1><?php echo $NombrePerfil ?></h1>
+      <h4><?php echo $resulTitulo ?>
+      <br><?php echo $resulUniversidad ?></h4>
+      <p>Objetivo: <br> <?php echo $resulObjetivo ?></p>
     </div>
+</div><!-- Fin contenedor Perfil -->
+
+</section>
+
+
+
+
+<section class="content container-fluid">
+<div class="col-12 ">
+
+  <div class="col-12 col-md-12">
+    <h1>Modificar Perfil Inicio</h1>
   </div>
-  <div class="form-group col-12 col-md-6">
-    <label for="formGroupExampleInput2">Universidad</label>
-    <input type="text" class="form-control" maxlength="50" name="universidad" value="<?php echo $resulUniversidad ?>" id="universidad" placeholder="Ingresar Titulo">
-    <div id="cajauniversidad">
+
+  <form class="formuperfil" enctype="multipart/form-data" action="../conecta/EditarPerfil.php" method="post">
+    <div class="form-group col-12 col-md-12">
+      <label for="exampleFormControlFile1">Subir Imagen</label>
+      <input type="file" name="imagen" class="form-control-file" id="exampleFormControlFile1">
     </div>
-  </div>
-  <div class="form-group col-12 col-md-12">
-    <label for="exampleFormControlTextarea1">Objetivo</label>
-    <textarea class="form-control" value="" maxlength="500" id="objetivo" name="objetivo" rows="3" required=""><?php echo $resulObjetivo ?></textarea>
-    <div id="cajaobjetivo">
+
+    <div class="form-group col-12 col-md-12">
+      <label for="formGroupExampleInput">Nombre Completo</label>
+      <input type="text" class="form-control" name="nombre" maxlength="50" value="<?php echo $NombrePerfil ?>" id="nombre" placeholder="Ingresar nombre" required="">
+      <div id="cajanombre">
+      </div>
     </div>
-  </div>
-<div class="col-12 col-md-12">
-  <input class="btn btn-primary" type="submit"  value="Guardar">  
+
+    <div class="row form-group col-12 col-md-6">
+      <label for="formGroupExampleInput2">Titulo Profesional</label>
+      <input type="text" class="form-control" name="titulo" maxlength="50" value="<?php echo $resulTitulo ?>" id="titulo" placeholder="Ingresar Titulo">
+      <div id="cajatitulo">
+      </div>
+    </div>
+
+    <div class="form-group col-12 col-md-6">
+      <label for="formGroupExampleInput2">Universidad</label>
+      <input type="text" class="form-control" maxlength="50" name="universidad" value="<?php echo $resulUniversidad ?>" id="universidad" placeholder="Ingresar Titulo">
+      <div id="cajauniversidad">
+      </div>
+    </div>
+
+    <div class="form-group col-12 col-md-12">
+      <label for="exampleFormControlTextarea1">Objetivo</label>
+      <textarea class="form-control" value="" maxlength="500" id="objetivo" name="objetivo" rows="3" required=""><?php echo $resulObjetivo ?></textarea>
+      <div id="cajaobjetivo">
+      </div>
+    </div>
+
+    <div class="col-12 col-md-12">
+      <input class="btn btn-primary" type="submit"  value="Guardar Informacion Perfil">  
+    </div>
+  </form>
+
 </div>
-    
-</form>
 
-    </section>
-    <!-- /.content -->
+
+</section>
+
+<section class="content container-fluid">
+
+<!---
+inicio de tabla conocimiento
+-->
+
+<div class="containe3 col-12">
+
+  <h2>Agregar Nueva categoria de Conocimientos</h2>
+
+  <div class="row">
+
+    <form enctype="multipart/form-data" action="" method="post">
+
+    <div class="form-group co-12 col-md-12">
+      <label for="exampleFormControlFile1">Subir Imagen</label>
+      <input type="file" name="imagen" class="form-control-file" id="exampleFormControlFile1">
+    </div>
+
+    <div class="form-group col-12 col-md-6">
+      <label for="formGroupExampleInput2">Nombre de Categoria</label>
+      <input type="text" class="form-control" name="conocimiento" maxlength="50" value="" id="titulo" placeholder="Ingresar Nombre">
+    </div>
+
+    <div class="col-12 col-md-12">
+      <input class="btn btn-primary" type="submit"  value="Agregar">  
+    </div>
+
+    </form>
   </div>
-  
+
+</div>
+
+</section>
+
+
+
+
+<section class="content container-fluid">
+<div class="containe col-12">
+
+    <h1>Modificar Conocimientos Inicio</h1>
+
+
+    <?php 
+    $consultaCono = "SELECT * FROM t_conocimientos";
+    $resultadoCono=mysqli_query($mysqli,$consultaCono);
+
+    while($filaCono=mysqli_fetch_row($resultadoCono))
+    {
+
+      $id=$filaCono[0];
+      $nombre=$filaCono[1];
+      $resultImg2=$filaCono[2];
+                    
+    ?>
+  <div class='row Con'>
+      
+      <div class='col-12 col-md-4'><center> <h2><?php echo $nombre ?></h2></center>
+          <?php echo "<img class='ImgCon' src='data:image/jpeg;base64,".base64_encode($resultImg2)."'/>" ?>
+          <center><input class='btn btn-light' type='submit'  value='Editar Categoria'></center>
+      </div>
+
+      <div class='col-12 col-md-8'>
+                      
+          <table>
+                          
+          <?php
+            $consultaCono2 = "SELECT * FROM t_conocimientos_detalle where C_Id_Conocimientos=$id order by C_Porcentaje desc";
+            $resultadoCono2=mysqli_query($mysqli,$consultaCono2);
+          ?>
+              <h3>Conocimientos detallados</h3>
+
+              <tr>
+                <th>Conocimiento</th>
+                <th>Porcentaje de conocimiento</th> 
+                <th>Opcion</th>
+                <th>Opcion</th>
+              </tr>
+          <?php
+
+                          while($filaCono2=mysqli_fetch_row($resultadoCono2))
+                          {
+                            $nombre_detalle=$filaCono2[1];
+                            $porcentaje=$filaCono2[2];
+                            echo "<td><input type='text' value='".$nombre_detalle."' name='porcentaje' class='form-control-file' id='exampleFormControlFile1'></td>";
+                            
+                            if (is_null($porcentaje)) {
+                            echo "<td><input type='text' value='0' ' name='porcentaje' class='form-control-file' id='exampleFormControlFile1'></td>";
+                            }
+                            else{
+                            
+                            echo "<td><input type='text' value='".$porcentaje."' name='porcentaje' class='form-control-file' id='exampleFormControlFile1'></td>";
+                            }
+                            echo "<td><input class='btn btn-warning' type='submit'  value='Modificar'></td>";
+                            echo "<td><input class='btn btn-danger' type='submit'  value='Eliminar'></td>";
+                            echo "</tr>";
+                          }
+          ?>
+
+          </table>
+
+          <br>
+          <h3>Agregar nuevo conocimiento</h3>
+          <table>
+          <tr>
+            <th>Conocimiento</th>
+            <th>Porcentaje de conocimiento</th> 
+            <th>Accion</th>             
+          </tr>
+          <tr>
+            <td>
+              <input type='text' name='porcentaje' class='form-control-file' id='exampleFormControlFile1'>
+            </td>
+            <td>
+              <input type='text' name='porcentaje' class='form-control-file' id='exampleFormControlFile1'>
+            </td>
+            <td>
+              <input class='btn btn-primary' type='submit'  value='Agregar'>
+            </td>
+          </tr>
+                          
+          </table>
+
+      </div>
+  </div>
+                
+    <?php
+    }
+    ?>
+     
+
+
+
+      
+    <!-- /.content -->
+</div>
+
+
+
+
+
+
+</section> 
 </div>
 <!-- ./wrapper -->
 

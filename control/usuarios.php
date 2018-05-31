@@ -40,6 +40,8 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
   <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="css/main.css">
+
  <link rel="icon" type="image/png" href="img/control.png" />
 
   <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
@@ -103,7 +105,7 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat icon-user-tie">Perfil</a>
+                  <a href="perfil.php" class="btn btn-default btn-flat icon-user-tie">Perfil</a>
                 </div>
                 <div class="pull-right">
                   <a href="../conecta/cerrar.php" class="btn btn-default btn-flat icon-exit">Cerrar Sesion</a>
@@ -148,7 +150,7 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
         <li><a href="inicio.php"><i class="fa icon-pencil"></i> <span>Inicio</span></a></li>
         <li><a href="curriculum.php"><i class="fa icon-pencil"></i> <span>Curriculum</span></a></li>
         <li><a href="gv.php"><i class="fa icon-pencil"></i> <span>Sobre Mi</span></a></li>
-        <li><a href="contacto.php"><i class="fa icon-pencil"></i> <span>Contacto</span></a></li>
+        <li><a href="perfil.php"><i class="fa icon-user-tie"></i> <span>Perfil</span></a></li>
         <li class="active"><a href="usuarios.php"><i class="fa icon-user"></i> <span>Usuarios</span></a></li>
         
       </ul>
@@ -168,7 +170,47 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
       <!--------------------------
         | Your Page Content Here |
         -------------------------->
+        <center><h1>Lista de Usuarios</h1></center>
+        <br>
+    <div class="row">
+      <div class="col-12">
+        <table class='ConBorde'>
+          <tr>
+            <th>Usuario</th>
+            <th>Nombre</th>
+            <th>Contraseña</th>
+            <th>Tipo</th>
+            <th>Opcion</th>
+            <th>Opcion</th>
 
+          </tr>
+      
+<?php
+        $consultaUser2 = "SELECT * FROM t_usu join t_tipo_usu on t_usu.C_Id_Tipo_Usu=t_tipo_usu.C_Id_Tipo_Usu";
+        $resultadoUser2 = $mysqli->query($consultaUser2);
+        while($filaUs=mysqli_fetch_row($resultadoUser2))
+        {
+            $nombreUs=$filaUs[1];
+            $nombrePe=$filaUs[2];
+            $tipo=$filaUs[7];
+
+
+            echo "<tr>
+                  <td>".$nombreUs."</td>
+                  <td>".$nombrePe."</td>
+                  <td>******</td>
+                  <td>".$tipo."</td>
+                  <td><input class='btn btn-warning' type='submit'  value='Modificar'></td>
+                <td><input class='btn btn-danger' type='submit'  value='Eliminar'></td> 
+
+                  </tr>
+            ";
+        }
+        mysqli_free_result($resultadoUser2);
+?>
+        </table>
+      </div>
+    </div>
     </section>
     <!-- /.content -->
   </div>

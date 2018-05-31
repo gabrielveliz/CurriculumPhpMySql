@@ -103,7 +103,7 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat icon-user-tie">Perfil</a>
+                  <a href="perfil.php" class="btn btn-default btn-flat icon-user-tie">Perfil</a>
                 </div>
                 <div class="pull-right">
                   <a href="../conecta/cerrar.php" class="btn btn-default btn-flat icon-exit">Cerrar Sesion</a>
@@ -148,7 +148,7 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
         <li><a href="inicio.php"><i class="fa icon-pencil"></i> <span>Inicio</span></a></li>
         <li><a href="curriculum.php"><i class="fa icon-pencil"></i> <span>Curriculum</span></a></li>
         <li><a href="gv.php"><i class="fa icon-pencil"></i> <span>Sobre Mi</span></a></li>
-        <li><a href="contacto.php"><i class="fa icon-pencil"></i> <span>Contacto</span></a></li>
+        <li><a href="perfil.php"><i class="fa icon-user-tie"></i> <span>Perfil</span></a></li>
         <li><a href="usuarios.php"><i class="fa icon-user"></i> <span>Usuarios</span></a></li>
         
       </ul>
@@ -168,7 +168,23 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
       <!--------------------------
         | Your Page Content Here |
         -------------------------->
-
+        <div class="col-11 col-md-8" style="margin:auto;">
+        <h2>Perfil</h2>
+        <p>Modificar informacion de su perfil.</p>
+        
+        <button class='btn btn-light' onclick="window.location.href='perfil.php'">Ver Perfil</button>
+        <h2>Contenido Web</h2>
+        <p>Agregar, modificar o eliminar contenidos web.</p>
+        
+        <button id="inicio" class='btn btn-light' onclick="window.location.href='inicio.php'">Inicio</button>
+        <button class='btn btn-light' onclick="window.location.href='curriculum.php'">Curriculum</button>
+        <button class='btn btn-light' onclick="window.location.href='gv.php'">Sobre Mi</button>
+        
+        <h2>Listas de Usuarios</h2>
+        <p>Agregar, modificar o eliminar cuentas de usuarios.</p>
+        
+        <button class='btn btn-light' onclick="window.location.href='usuarios.php'">Cuentas de Usuario</button>
+        </div>
     </section>
     <!-- /.content -->
   </div>
@@ -184,6 +200,31 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
+<script>
+$(document).ready(function(){
+
+$('#perfil').click(function(){
+        url = "contacto.php";
+        $(location).attr('href',url);
+      });
+    $('#inicio').click(
+        window.location='inicio.php';
+      );
+    $('#curriculum').click(
+        window.location='curriculum.php';
+      );
+    $('#sobre').click(
+        window.location='gv.php';
+      );
+    $('#cuentas').click(
+        window.location='usuarios.php';
+      );
+
+});
+    
+
+
+</script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the

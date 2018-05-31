@@ -59,6 +59,7 @@ $resultImg = $filaPerfil['C_Img_Perfil'];
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
+
 <div class="wrapper">
 
   <!-- Main Header -->
@@ -114,7 +115,7 @@ $resultImg = $filaPerfil['C_Img_Perfil'];
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat icon-user-tie">Perfil</a>
+                  <a href="perfil.php" class="btn btn-default btn-flat icon-user-tie">Perfil</a>
                 </div>
                 <div class="pull-right">
                   <a href="../conecta/cerrar.php" class="btn btn-default btn-flat icon-exit">Cerrar Sesion</a>
@@ -159,7 +160,7 @@ $resultImg = $filaPerfil['C_Img_Perfil'];
         <li class="active"><a href="inicio.php"><i class="fa icon-pencil"></i> <span>Inicio</span></a></li>
         <li><a href="curriculum.php"><i class="fa icon-pencil"></i> <span>Curriculum</span></a></li>
         <li><a href="gv.php"><i class="fa icon-pencil"></i> <span>Sobre Mi</span></a></li>
-        <li><a href="contacto.php"><i class="fa icon-pencil"></i> <span>Contacto</span></a></li>
+        <li><a href="perfil.php"><i class="fa icon-user-tie"></i> <span>Perfil</span></a></li>
         <li><a href="usuarios.php"><i class="fa icon-user"></i> <span>Usuarios</span></a></li>
         
       </ul>
@@ -175,15 +176,20 @@ $resultImg = $filaPerfil['C_Img_Perfil'];
     
 
     <!-- Main content -->
-<section class="content container-fluid">
+<section class="content container-fluid" id="content">
 
       <!--------------------------
         | Your Page Content Here |
         -------------------------->
-         
      
+ <center>   
+ <h4>Escoja Seccion</h4> 
 
-
+<a href="#perfil" class="btn btn-info" data-id="perfil" >Modificar Perfil Inicio</a>
+<a href="#nueva_categoria" class="btn btn-info" data-id="nueva_categoria" >Nueva Categoria</a>
+<a href="#conocimiento" class="btn btn-info" data-id="conocimiento" >Conocimientos</a>
+</center>
+<br>
 
 
 
@@ -207,7 +213,7 @@ $resultImg = $filaPerfil['C_Img_Perfil'];
 
 
 
-<section class="content container-fluid">
+<section class="content container-fluid" id="perfil" >
 <div class="col-12 ">
 
   <div class="col-12 col-md-12">
@@ -258,7 +264,7 @@ $resultImg = $filaPerfil['C_Img_Perfil'];
 
 </section>
 
-<section class="content container-fluid">
+<section class="content container-fluid" id="nueva_categoria">
 
 <!---
 inicio de tabla conocimiento
@@ -266,25 +272,25 @@ inicio de tabla conocimiento
 
 <div class="containe3 col-12">
 
-  <h2>Agregar Nueva categoria de Conocimientos</h2>
+  <h2>Nueva categoria de Conocimientos</h2>
 
   <div class="row">
 
-    <form enctype="multipart/form-data" action="" method="post">
+    <form enctype="multipart/form-data" action="../conecta/inCono.php" method="post">
 
-    <div class="form-group co-12 col-md-12">
-      <label for="exampleFormControlFile1">Subir Imagen</label>
-      <input type="file" name="imagen" class="form-control-file" id="exampleFormControlFile1">
-    </div>
+      <div class="form-group co-12 col-md-12">
+        <label for="exampleFormControlFile1">Subir Imagen</label>
+        <input type="file" name="imagen" class="form-control-file" id="exampleFormControlFile1" required="">
+      </div>
 
-    <div class="form-group col-12 col-md-6">
-      <label for="formGroupExampleInput2">Nombre de Categoria</label>
-      <input type="text" class="form-control" name="conocimiento" maxlength="50" value="" id="titulo" placeholder="Ingresar Nombre">
-    </div>
+      <div class="form-group col-12 col-md-6">
+        <label for="formGroupExampleInput2">Nombre de Categoria</label>
+        <input type="text" class="form-control" name="conocimiento" maxlength="50" id="titulo" placeholder="Ingresar Nombre" required="">
+      </div>
 
-    <div class="col-12 col-md-12">
-      <input class="btn btn-primary" type="submit"  value="Agregar">  
-    </div>
+      <div class="col-12 col-md-12">
+        <input class="btn btn-primary" type="submit"  value="Agregar">  
+      </div>
 
     </form>
   </div>
@@ -296,10 +302,10 @@ inicio de tabla conocimiento
 
 
 
-<section class="content container-fluid">
+<section class="content container-fluid" id="conocimiento">
 <div class="containe col-12">
 
-    <h1>Modificar Conocimientos Inicio</h1>
+    <h1>Conocimientos</h1>
 
 
     <?php 
@@ -312,13 +318,97 @@ inicio de tabla conocimiento
       $id=$filaCono[0];
       $nombre=$filaCono[1];
       $resultImg2=$filaCono[2];
+
+      $mod1="mod".$id;
+      $mod="modal".$id;
                     
     ?>
   <div class='row Con'>
       
       <div class='col-12 col-md-4'><center> <h2><?php echo $nombre ?></h2></center>
           <?php echo "<img class='ImgCon' src='data:image/jpeg;base64,".base64_encode($resultImg2)."'/>" ?>
-          <center><input class='btn btn-light' type='submit'  value='Editar Categoria'></center>
+          
+        <center><button type="button" class="btn btn-light" data-toggle="modal" data-target="#<?php echo $mod1 ?>">
+          Editar Categoria
+        </button>
+        </center>
+        <br>
+        <center><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#<?php echo $mod ?>">
+          Eliminar
+        </button>
+        </center>
+
+<!-- Modal -->
+<div class="modal fade" id="<?php echo $mod1 ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modificar Categoria</h5>
+        
+      </div>
+      <div class="modal-body">
+       <?php
+        $consultacono = "SELECT * FROM t_conocimientos where C_Id_Conocimientos=$id";
+        $resultadocono = $mysqli->query($consultacono);
+        $tupla = $resultadocono->fetch_assoc();
+
+        $Cono = $tupla['C_Titulo_Conocimiento'];
+        $imag=$tupla['C_Imagen_logo'];
+
+        
+
+
+        ?>
+        <form enctype="multipart/form-data" action="../conecta/EditarCon.php" method="post">
+        <input type="hidden" value="<?php echo $id ?>" name="id">
+        <?php echo "<img class='ImgCon' src='data:image/jpeg;base64,".base64_encode($imag)."'/>" ?>
+            
+
+            
+            <label for="exampleFormControlFile1">Subir Imagen</label>
+            <input type="file" name="imagen"  class="form-control-file" id="exampleFormControlFile1">
+          
+            <label for="formGroupExampleInput2">Nombre de Categoria</label>
+            <input type="text" class="form-control" value="<?php echo $Cono; ?>" name="conocimiento" maxlength="50" id="titulo" placeholder="Ingresar Nombre" required="">
+
+        
+        
+        
+      </div>
+      <div class="modal-footer">
+        <input class="btn btn-primary" type="submit"  value="Modificar"> 
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="<?php echo $mod ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Mensaje de Advertencia</h5>
+        
+      </div>
+      <div class="modal-body">
+       <h4>¿Está seguro que desea eliminar la categoria: <?php echo $nombre; ?> ?</h4>
+       <p>Esta accion eliminara toda la informacion relacionada con esta categoria.</p>
+        
+        
+      </div>
+      <div class="modal-footer">
+        <form action="../conecta/EliminarCon.php" method="post">
+        <input type="hidden" value="<?php echo $id ?>" name="id">
+        <input type="submit" value="Eliminar" class="btn btn-danger">
+        
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+          
       </div>
 
       <div class='col-12 col-md-8'>
@@ -346,11 +436,11 @@ inicio de tabla conocimiento
                             echo "<td><input type='text' value='".$nombre_detalle."' name='porcentaje' class='form-control-file' id='exampleFormControlFile1'></td>";
                             
                             if (is_null($porcentaje)) {
-                            echo "<td><input type='text' value='0' ' name='porcentaje' class='form-control-file' id='exampleFormControlFile1'></td>";
+                            echo "<td><input type='text' value='0' ' name='porcentaje' class='form-control-file' id='exampleFormControlFile1' required=''></td>";
                             }
                             else{
                             
-                            echo "<td><input type='text' value='".$porcentaje."' name='porcentaje' class='form-control-file' id='exampleFormControlFile1'></td>";
+                            echo "<td><input type='text' value='".$porcentaje."' name='porcentaje' class='form-control-file' id='exampleFormControlFile1' required=''></td>";
                             }
                             echo "<td><input class='btn btn-warning' type='submit'  value='Modificar'></td>";
                             echo "<td><input class='btn btn-danger' type='submit'  value='Eliminar'></td>";
@@ -369,15 +459,17 @@ inicio de tabla conocimiento
             <th>Accion</th>             
           </tr>
           <tr>
+            <form action="">
             <td>
-              <input type='text' name='porcentaje' class='form-control-file' id='exampleFormControlFile1'>
+              <input type='text' name='porcentaje' class='form-control-file' id='exampleFormControlFile1' required="">
             </td>
             <td>
-              <input type='text' name='porcentaje' class='form-control-file' id='exampleFormControlFile1'>
+              <input type='text' name='porcentaje' class='form-control-file' id='exampleFormControlFile1' required="">
             </td>
             <td>
               <input class='btn btn-primary' type='submit'  value='Agregar'>
             </td>
+            </form>
           </tr>
                           
           </table>
@@ -387,6 +479,8 @@ inicio de tabla conocimiento
                 
     <?php
     }
+    mysqli_free_result($resultadocono);
+    mysqli_free_result($resultadoCono2);
     ?>
      
 

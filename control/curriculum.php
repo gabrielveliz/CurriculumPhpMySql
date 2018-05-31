@@ -104,7 +104,7 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat icon-user-tie">Perfil</a>
+                  <a href="perfil.php" class="btn btn-default btn-flat icon-user-tie">Perfil</a>
                 </div>
                 <div class="pull-right">
                   <a href="../conecta/cerrar.php" class="btn btn-default btn-flat icon-exit">Cerrar Sesion</a>
@@ -149,7 +149,7 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
         <li><a href="inicio.php"><i class="fa icon-pencil"></i> <span>Inicio</span></a></li>
         <li class="active"><a href="curriculum.php"><i class="fa icon-pencil"></i> <span>Curriculum</span></a></li>
         <li><a href="gv.php"><i class="fa icon-pencil"></i> <span>Sobre Mi</span></a></li>
-        <li><a href="contacto.php"><i class="fa icon-pencil"></i> <span>Contacto</span></a></li>
+        <li><a href="perfil.php"><i class="fa icon-user-tie"></i> <span>Perfil</span></a></li>
         <li><a href="usuarios.php"><i class="fa icon-user"></i> <span>Usuarios</span></a></li>
         
       </ul>
@@ -173,8 +173,9 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
       <?php 
       $consultaExp = "SELECT C_Id_Laboral, C_Puesto, C_Empresa, C_Link,DATE_FORMAT(C_Fecha_I,'%d/%m/%Y'), DATE_FORMAT(C_Fecha_F,'%d/%m/%Y'), C_Img_Laboral FROM t_laboral order by C_Fecha_F Desc";
       $resultadoExp=mysqli_query($mysqli,$consultaExp);
+      
       while($filaExp=mysqli_fetch_row($resultadoExp))
-      {
+      {$cont=1;
 
 
         $idExp=$filaExp[0];
@@ -205,13 +206,15 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
 
         <p>Fecha de Inicio: ".$fecha_i."</p>
         <p>Fecha de Termino: ".$fecha_f."</p>
+        <input class='btn btn-warning' type='submit'  value='Modificar Experiencia'>
         </div>
         <div class='col-12'>
         <br>
-          <table>
+          <table class='ConBorde'>
           <center><h4>Tareas Realizadas</h4></center>
             <thead>
               <tr>
+                <th>N°</th>
                 <th>Tarea</th>
                 <th>Accion</th>
                 <th>Accion</th>
@@ -229,6 +232,7 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
           $nombre_Det=$filaDet[1];
           echo "
                 <tr>
+                <td>".$cont."</td>
                 <td>".$nombre_Det."</td>
                 <td><input class='btn btn-warning' type='submit'  value='Modificar'></td>
                 <td><input class='btn btn-danger' type='submit'  value='Eliminar'></td>
@@ -238,7 +242,7 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
           
           
           
-        } //fin 2° while
+        $cont = $cont+1;} //fin 2° while
       echo "
             </tbody>";
          
@@ -251,6 +255,8 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
 <?php
 
       } //fin 1° while
+      mysqli_free_result($resultadoExp);
+      mysqli_free_result($resultadoDet);
 
 ?>
   </div> <!-- fin div m -->
@@ -297,6 +303,7 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
 
         <p>Fecha de Inicio: ".$fecha_i."</p>
         <p>Fecha de Termino: ".$fecha_f."</p>
+        <input class='btn btn-warning' type='submit'  value='Modificar Estudio'>
         </div>
 
     ";
@@ -326,8 +333,8 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
 
 <!-- jQuery 3 -->
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
-<!-- Bootstrap 3.3.7 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>

@@ -30,7 +30,7 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Modificar Sobre Mi - Gabriel Veliz</title>
+  <title>Modificar Perfil - Gabriel Veliz</title>
 
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
@@ -40,7 +40,6 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
   <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="css/main.css">
  <link rel="icon" type="image/png" href="img/control.png" />
 
   <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
@@ -148,8 +147,8 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
         <li><a href="index.php"><i class="fa icon-home2"></i> <span>Administrar</span></a></li>
         <li><a href="inicio.php"><i class="fa icon-pencil"></i> <span>Inicio</span></a></li>
         <li><a href="curriculum.php"><i class="fa icon-pencil"></i> <span>Curriculum</span></a></li>
-        <li class="active"><a href="gv.php"><i class="fa icon-pencil"></i> <span>Sobre Mi</span></a></li>
-        <li><a href="perfil.php"><i class="fa icon-user-tie"></i> <span>Perfil</span></a></li>
+        <li><a href="gv.php"><i class="fa icon-pencil"></i> <span>Sobre Mi</span></a></li>
+        <li class="active"><a href="perfil.php"><i class="fa icon-user-tie"></i> <span>Perfil</span></a></li>
         <li><a href="usuarios.php"><i class="fa icon-user"></i> <span>Usuarios</span></a></li>
         
       </ul>
@@ -169,41 +168,6 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
       <!--------------------------
         | Your Page Content Here |
         -------------------------->
-
-  <?php
-
-
-        $consultaHis = "SELECT * FROM t_mi";
-        $resultadoHis=mysqli_query($mysqli,$consultaHis);
-                  
-        while($filaHis=mysqli_fetch_row($resultadoHis))
-        {
-          $historia=$filaHis[2];
-          $imag=$filaHis[3];
-          $detaima=$filaHis[4];
-          $verima=$filaHis[5];
-
-          echo "
-          <img class='fami' src='data:image/jpeg;base64,".base64_encode($imag)."'/>
-          <p>".$detaima."</p>
-          <p>
-          ".$historia."
-          </p>
-          
-
-          ";
-        }
-
-
-
-  ?>
-
-
-
-
-
-
-
 
     </section>
     <!-- /.content -->

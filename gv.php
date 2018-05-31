@@ -1,3 +1,6 @@
+<?php
+include "conecta/conec.php"
+?>
 <!doctype html>
 <html class="no-js" lang="">
 
@@ -59,56 +62,66 @@
     
     <div class="ContSeg ContQuien container-fluid">
       
+      
       <div class="yo col-12 col-md-8">
+      <?php
 
 
-        <img id="myImg1" class="fami" src="img/Familia.jpg" alt="Mi perro, mi gato, mi polola y yo.">
-        <p>Mi perro, mi gato, mi polola y yo.</p>
-        <!-- The Modal -->
-        <div id="myModal1" class="modal modal1">
-          <span class="close close1">&times;</span>
-          <img class="modal-content" id="img1">
-          <div class="caption caption1"></div>
-        </div>
-        <br>
-      
-         
-          <h3>
-          La mayor parte de mi vida laboral la desempeñe como garzón a medio tiempo para pagar mis estudios, lo que me enseñó a tratar con distintos tipos de personas.
-          </h3>
-          <br>
-           <img id="myImg2" class="fami" src="img/dianino.jpg" alt="tquila">
-          <p>Dia del Niño - Tquila Spa.</p>
+        $consultaHis = "SELECT * FROM t_mi";
+        $resultadoHis=mysqli_query($mysqli,$consultaHis);
+                  
+        while($filaHis=mysqli_fetch_row($resultadoHis))
+        {
+          $historia=$filaHis[2];
+          $imag=$filaHis[3];
+          $detaima=$filaHis[4];
+          $verima=$filaHis[5];
+
+          $id="".$filaHis[0];
+
+          echo "
+          <img id='myImg".$id."' class='fami' alt='".$detaima."' src='data:image/jpeg;base64,".base64_encode($imag)."'/>
+          <p>".$detaima."</p>
           <!-- The Modal -->
-        <div id="myModal2" class="modal modal2">
-          <span class="close close2">&times;</span>
-          <img class="modal-content" id="img2">
-          <div class="caption caption2"></div>
+        <div id='myModal".$id."' class='modal modal".$id."'>
+          <span class='close close".$id."'>&times;</span>
+          <img class='modal-content' id='img".$id."'>
+          <div class='caption caption".$id."'></div>
+        </div>
+        <script>
+var modal".$id." = document.getElementById('myModal".$id."');
+var img".$id." = document.getElementById('myImg".$id."');
+var modalImg".$id." = document.getElementById('img".$id."');
+var captionText".$id." = document.getElementById('caption".$id."');
 
-        </div>
+img".$id.".onclick = function(){
+    modal".$id.".style.display = 'block';
+    modalImg".$id.".src = this.src;
+    captionText".$id.".innerHTML = this.alt;
+}
+
+var span".$id." = document.getElementsByClassName('close".$id."')[0];
+
+
+span".$id.".onclick = function() { 
+    modal".$id.".style.display = 'none';
+}
+</script>
+          
+          
           <h3>
-          
-          <br>
-          
-          En mi adolescencia viví de cerca la vida militar, primero en la enseñanza media en un premilitar y después en el servicio militar voluntario, el cual me ayudo a conocer de cerca la belleza de Punta Arenas y sus entornos.
+          ".$historia."
           </h3>
-          <br>
           
-          <img id="myImg3" class="fami" src="img/servicio.jpg" alt="servicio">
-          <p>Puerto Natales - Servicio militar.</p>
-          <!-- The Modal -->
-        <div id="myModal3" class="modal modal3">
-          <span class="close close3">&times;</span>
-          <img class="modal-content" id="img3">
-          <div class="caption caption3"></div>
-        </div>
-          <br>
-          <h3>
-          Mis hobbies son ver Anime, escuchar música, pintar, conducir motos, viajar y practicar tiro al blanco. En un futuro también deseo incluir la práctica del deporte Airsoft.
-        </h3>
-        
+          ";
+?>
+
+
+<?php
+        }
+  ?>
+
       </div>
-      
     </div>
 
 

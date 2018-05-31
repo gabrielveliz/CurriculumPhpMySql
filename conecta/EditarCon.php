@@ -1,11 +1,9 @@
 <?php
 include("conec.php");
+    
 
-
-    $nombre=$_POST['nombre'];
-    $titulo=$_POST['titulo'];
-    $objetivo=$_POST['objetivo'];
-    $universidad=$_POST['universidad'];
+    $id=$_POST['id'];
+    $nombre=$_POST['conocimiento'];
     $imagen=$_FILES["imagen"]["tmp_name"];
     
     //Verifica si se ha subido la imagen
@@ -14,7 +12,7 @@ include("conec.php");
         if ($_FILES["imagen"]["type"]=="image/jpeg"|| $_FILES["imagen"]["type"]=="image/jpg" || $_FILES["imagen"]["type"]=="image/png" ){
     
         $imagen=addslashes(file_get_contents($imagen));
-        $editar="update t_perfil set C_Nombre='$nombre',C_Titulo_Pro='$titulo',C_Objetivo='$objetivo',C_Unive_Pro='$universidad',C_Img_Perfil='$imagen' where C_Id_Perfil=1";
+        $editar="update t_conocimientos set C_Titulo_Conocimiento='$nombre',C_Imagen_logo='$imagen' where C_Id_Conocimientos=$id";
 
          $consulta = $mysqli->query($editar);
         //Si la consulta imprime el error de la consulta 
@@ -31,7 +29,7 @@ include("conec.php");
     else
     {
         
-        $editar="update t_perfil set C_Nombre='$nombre',C_Titulo_Pro='$titulo',C_Objetivo='$objetivo',C_Unive_Pro='$universidad' where C_Id_Perfil=1";
+        $editar="update t_conocimientos set C_Titulo_Conocimiento='$nombre' where C_Id_Conocimientos=$id";
 
          $consulta = $mysqli->query($editar);
          $mysqli->close();

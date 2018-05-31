@@ -1,9 +1,12 @@
+*
+{
+	transition: 2s;
+}
 .FotoPerfil
 {
     
     border-radius: 300px;
     width: 60%;
-    
     margin: 2% 20% 2% 20%;
 }
 
@@ -82,9 +85,10 @@ td,th
 	width: 100px;
 }
 
-td
+.ConBorde td
 {
-	border-bottom:1px black solid ; 
+	border:1px dashed #00B27F; 
+	background-color: white;
 }
 .colEx
 {
@@ -94,3 +98,15 @@ td
 	box-shadow: 1px 1px 3px black;
 	padding: 1%;
 }
+.fami
+{
+	width: 300px;
+	border-radius: 10px;
+	margin: auto;
+	display: block;
+}
+.modal-body > h4, .modal-body > p
+{
+	text-align: center;
+}
+

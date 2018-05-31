@@ -12,7 +12,9 @@
     $resultadoUser->execute();
     $resultadoUser->bind_result($id,$resulNombre);
     $fila = $resultadoUser->fetch();
+    $mysqli->close();
 
+    
     if (empty($resulNombre)) {  
 
         echo"<script>alert('usuario o clave incorrectos');</script>";

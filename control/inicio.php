@@ -338,76 +338,73 @@ inicio de tabla conocimiento
         </button>
         </center>
 
-<!-- Modal -->
-<div class="modal fade" id="<?php echo $mod1 ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modificar Categoria</h5>
-        
-      </div>
-      <div class="modal-body">
-       <?php
-        $consultacono = "SELECT * FROM t_conocimientos where C_Id_Conocimientos=$id";
-        $resultadocono = $mysqli->query($consultacono);
-        $tupla = $resultadocono->fetch_assoc();
+      <!-- Modal para modificar categoria-->
+      <div class="modal fade" id="<?php echo $mod1 ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modificar Categoria</h5>
+              
+            </div>
+            <div class="modal-body">
+             <?php
+              $consultacono = "SELECT * FROM t_conocimientos where C_Id_Conocimientos=$id";
+              $resultadocono = $mysqli->query($consultacono);
+              $tupla = $resultadocono->fetch_assoc();
 
-        $Cono = $tupla['C_Titulo_Conocimiento'];
-        $imag=$tupla['C_Imagen_logo'];
+              $Cono = $tupla['C_Titulo_Conocimiento'];
+              $imag=$tupla['C_Imagen_logo'];
 
-        
+              
 
 
-        ?>
-        <form enctype="multipart/form-data" action="../conecta/EditarCon.php" method="post">
-        <input type="hidden" value="<?php echo $id ?>" name="id">
-        <?php echo "<img class='ImgCon' src='data:image/jpeg;base64,".base64_encode($imag)."'/>" ?>
-            
+              ?>
+              <form enctype="multipart/form-data" action="../conecta/EditarCon.php" method="post">
+              <input type="hidden" value="<?php echo $id ?>" name="id">
+              <?php echo "<img class='ImgCon' src='data:image/jpeg;base64,".base64_encode($imag)."'/>" ?>
+                  
 
-            
-            <label for="exampleFormControlFile1">Subir Imagen</label>
-            <input type="file" name="imagen"  class="form-control-file" id="exampleFormControlFile1">
-          
-            <label for="formGroupExampleInput2">Nombre de Categoria</label>
-            <input type="text" class="form-control" value="<?php echo $Cono; ?>" name="conocimiento" maxlength="50" id="titulo" placeholder="Ingresar Nombre" required="">
+                  
+                  <label for="exampleFormControlFile1">Subir Imagen</label>
+                  <input type="file" name="imagen"  class="form-control-file" id="exampleFormControlFile1">
+                
+                  <label for="formGroupExampleInput2">Nombre de Categoria</label>
+                  <input type="text" class="form-control" value="<?php echo $Cono; ?>" name="conocimiento" maxlength="50" id="titulo" placeholder="Ingresar Nombre" required="">
 
-        
-        
-        
+            </div>
+            <div class="modal-footer">
+              <input class="btn btn-primary" type="submit"  value="Modificar"> 
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="modal-footer">
-        <input class="btn btn-primary" type="submit"  value="Modificar"> 
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        </form>
+      <!-- Modal Para Eliminar-->
+      <div class="modal fade" id="<?php echo $mod ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Mensaje de Advertencia</h5>
+              
+            </div>
+            <div class="modal-body">
+             <h4>¿Está seguro que desea eliminar la categoria: <?php echo $nombre; ?> ?</h4>
+             <p>Esta accion eliminara toda la informacion relacionada con esta categoria.</p>
+              
+              
+            </div>
+            <div class="modal-footer">
+              <form action="../conecta/EliminarCon.php" method="post">
+              <input type="hidden" value="<?php echo $id ?>" name="id">
+              <input type="submit" value="Eliminar" class="btn btn-danger">
+              
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="<?php echo $mod ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Mensaje de Advertencia</h5>
-        
-      </div>
-      <div class="modal-body">
-       <h4>¿Está seguro que desea eliminar la categoria: <?php echo $nombre; ?> ?</h4>
-       <p>Esta accion eliminara toda la informacion relacionada con esta categoria.</p>
-        
-        
-      </div>
-      <div class="modal-footer">
-        <form action="../conecta/EliminarCon.php" method="post">
-        <input type="hidden" value="<?php echo $id ?>" name="id">
-        <input type="submit" value="Eliminar" class="btn btn-danger">
-        
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
           
       </div>
 
@@ -431,19 +428,26 @@ inicio de tabla conocimiento
 
                           while($filaCono2=mysqli_fetch_row($resultadoCono2))
                           {
+                            $iddeta=$filaCono2[0];
                             $nombre_detalle=$filaCono2[1];
                             $porcentaje=$filaCono2[2];
-                            echo "<td><input type='text' value='".$nombre_detalle."' name='porcentaje' class='form-control-file' id='exampleFormControlFile1'></td>";
+                            echo "<td>
+                            <form action='../conecta/edDet.php' method='post' accept-charset='utf-8'>
+                              
+                            <input type='hidden' value='".$iddeta."' name='id'>
+                            <input type='text' value='".$nombre_detalle."' name='detalle' class='form-control-file' id='exampleFormControlFile1' required=''></td>";
+                            echo "<td><input type='text' value='".$porcentaje."' name='porcentaje' class='form-control-file' id='exampleFormControlFile2' required=''></td>";
                             
-                            if (is_null($porcentaje)) {
-                            echo "<td><input type='text' value='0' ' name='porcentaje' class='form-control-file' id='exampleFormControlFile1' required=''></td>";
-                            }
-                            else{
-                            
-                            echo "<td><input type='text' value='".$porcentaje."' name='porcentaje' class='form-control-file' id='exampleFormControlFile1' required=''></td>";
-                            }
-                            echo "<td><input class='btn btn-warning' type='submit'  value='Modificar'></td>";
-                            echo "<td><input class='btn btn-danger' type='submit'  value='Eliminar'></td>";
+                            echo "<td><input class='btn btn-warning' type='submit'  value='Modificar'></td>
+                            </form>";
+
+
+                            echo "<td>
+                            <form action='../conecta/elDet.php' method='post' accept-charset='utf-8'>
+                              <input type='hidden' value='".$iddeta."' name='id'>
+                              <input class='btn btn-danger' type='submit'  value='Eliminar'>
+                            </form>
+                            </td>";
                             echo "</tr>";
                           }
           ?>
@@ -459,9 +463,10 @@ inicio de tabla conocimiento
             <th>Accion</th>             
           </tr>
           <tr>
-            <form action="">
+            <form action="../conecta/inDet.php" method='post' accept-charset='utf-8'>
+              <input type="hidden" value="<?php echo $id ?>" name="id">
             <td>
-              <input type='text' name='porcentaje' class='form-control-file' id='exampleFormControlFile1' required="">
+              <input type='text' name='detalle' class='form-control-file' id='exampleFormControlFile1' required="">
             </td>
             <td>
               <input type='text' name='porcentaje' class='form-control-file' id='exampleFormControlFile1' required="">

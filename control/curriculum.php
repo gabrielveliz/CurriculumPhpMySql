@@ -207,6 +207,8 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
         <p>Fecha de Inicio: ".$fecha_i."</p>
         <p>Fecha de Termino: ".$fecha_f."</p>
         <input class='btn btn-warning' type='submit'  value='Modificar Experiencia'>
+
+        <input class='btn btn-danger' type='submit'  value='Eliminar Experiencia'>
         </div>
         <div class='col-12'>
         <br>
@@ -233,7 +235,8 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
           echo "
                 <tr>
                 <td>".$cont."</td>
-                <td>".$nombre_Det."</td>
+                <td><input type='text' value='".$nombre_Det."' name='detalle' class='form-control-file' id='exampleFormControlFile1' required=''></td>
+
                 <td><input class='btn btn-warning' type='submit'  value='Modificar'></td>
                 <td><input class='btn btn-danger' type='submit'  value='Eliminar'></td>
                 </tr>
@@ -249,6 +252,28 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
 
 ?>
 </table>
+<br>
+<center><h4>Agregar nueva tarea</h4></center>
+          <table class='ConBorde'>
+          <tr>
+            <th>Tarea</th>
+             
+            <th>Accion</th>             
+          </tr>
+          <tr>
+            <form action="../conecta/inDet.php" method='post' accept-charset='utf-8'>
+              <input type="hidden" value="<?php echo $idExp ?>" name="id">
+            <td>
+              <input type='text' name='detalle' class='form-control-file' id='exampleFormControlFile1' required="">
+            </td>
+            
+            <td>
+              <input class='btn btn-primary' type='submit'  value='Agregar'>
+            </td>
+            </form>
+          </tr>
+                          
+          </table>
           </div>
 <br>
     </div> <!--Fin row  -->

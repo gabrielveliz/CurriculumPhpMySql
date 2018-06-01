@@ -1,7 +1,3 @@
-*
-{
-	transition: 2s;
-}
 .FotoPerfil
 {
     
@@ -89,6 +85,10 @@ td,th
 {
 	border:1px dashed #00B27F; 
 	background-color: white;
+}
+.ConBorde input[type='text']
+{
+	width: 100%;
 }
 .colEx
 {

@@ -22,7 +22,7 @@ $consultaTipo = "SELECT * FROM t_tipo_usu WHERE C_Id_Tipo_Usu = $resulIdTipo";
 $resultadoTipo = $mysqli->query($consultaTipo);
 $fila2= $resultadoTipo->fetch_assoc();
 $resultadoTipoNombre=$fila2['C_Tipo'];
-
+ 
 
 ?>
 <!DOCTYPE html>
@@ -165,10 +165,73 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
         | Your Page Content Here |
         -------------------------->
     <div class="CurFon col-12">
-      <center><h3>Experiencia profesional</h3>
-      <button class="activar btn btn-primary" id="mostrar">Mostrar</button><button class="activar btn btn-primary" id="ocultar">Ocultar</button></center>
+     <center> 
+      <button class="activar btn btn-primary btn-lg btn-block" id="mostrar">Mostrar Experiencia</button><button class="activar btn btn-secondary btn-lg btn-block" id="ocultar">Ocultar Experiencia</button></center>
+      
       <div id="m">
+        <center><h3>Experiencia profesional</h3></center>
+        
+        <div class="row">
 
+    
+
+   <center> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#agregar">
+          Agregar Nueva Experiencia
+        </button></center>
+        <div class="modal fade" id="agregar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Nueva Experiencia</h5>
+              
+            </div>
+            <div class="modal-body">
+        <form enctype="multipart/form-data" action="../conecta/inEx.php" method="post">
+        <center><h4>Agregar Nueva Experiencia</h4></center>
+      
+        <label for="exampleFormControlFile1">Subir Imagen</label>
+        <input type="file" name="imagen" class="form-control-file" id="exampleFormControlFile1" required="">
+     
+
+        <br>
+        <label for="formGroupExampleInput2">Puesto</label>
+        <input type="text" class="form-control" name="puesto" maxlength="50" id="titulo" placeholder="Ingresar Puesto" required="">
+        <br>
+        <label for="formGroupExampleInput2">Empresa</label>
+        <input type="text" class="form-control" name="empresa" maxlength="50" id="titulo" placeholder="Ingresar Empresa" required="">
+        <br>
+
+        <label id="web" for="formGroupExampleInput2">Sitio web de la empresa</label>
+        <p style="color:red"><input type="checkbox" name="no_web" id="cbox1" value="no_web">La empresa no cuenta con sitio Web</p>
+        <input type="text" class="form-control" name="web" maxlength="50" id="web2" placeholder="Ingresar Sitio Web">
+        <br>
+        <p style="color:red"><input type="checkbox" name="no_fecha" id="cbox2" value="no_fecha">No agregar Fechas</p>
+        <label id="fecha1" for="formGroupExampleInput2">Fecha de inicio</label>
+        <input type="date" class="form-control" name="fecha_1" maxlength="50" id="fecha2" placeholder="Ingresar fecha inicio" >
+        <br>
+        <label id="fecha3" for="formGroupExampleInput2">Fecha de Termino</label>
+        <input type="date" class="form-control" name="fecha_2" maxlength="50" id="fecha4" placeholder="Ingresar fecha fin" >
+        
+        <label id="fecha5" for="formGroupExampleInput2">Ingresar una Fecha para ordenar contrologicamente esta experiencia</label>
+        <input type="date" class="form-control" name="fecha_3" maxlength="50" id="fecha6" placeholder="Ingresar fecha fin">
+
+
+  
+              
+              
+            </div>
+            <div class="modal-footer">
+              
+              <input type="hidden" value="" name="id">
+              <input type="submit" value="Agregar" class="btn btn-primary">
+              
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
                       <br>
       <?php 
       $consultaExp = "SELECT C_Id_Laboral, C_Puesto, C_Empresa, C_Link,DATE_FORMAT(C_Fecha_I,'%d/%m/%Y'), DATE_FORMAT(C_Fecha_F,'%d/%m/%Y'), C_Img_Laboral FROM t_laboral order by C_Fecha_F Desc";
@@ -186,7 +249,8 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
         $fecha_f=$filaExp[5];
         $imgExp=$filaExp[6];
 
-        
+        $mod1="mod".$idExp;
+        $mod="modal".$idExp;
 ?>
 
     <div class="row colEx">
@@ -205,11 +269,103 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
         echo " <p>Empresa: ".$empresa."</p>
 
         <p>Fecha de Inicio: ".$fecha_i."</p>
-        <p>Fecha de Termino: ".$fecha_f."</p>
+        <p>Fecha de Termino: ".$fecha_f."</p>";
+        ?>
+        
         <input class='btn btn-warning' type='submit'  value='Modificar Experiencia'>
 
-        <input class='btn btn-danger' type='submit'  value='Eliminar Experiencia'>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#<?php echo $mod ?>">
+          Eliminar Experiencia
+        </button>
         </div>
+        
+        <!-- inicio modal eliminar-->
+        <div class="modal fade" id="<?php echo $mod ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Mensaje de Advertencia</h5>
+              
+            </div>
+            <div class="modal-body">
+             <h4>¿Está seguro que desea eliminar la experiencia "<?php echo $nombre; ?>" ?</h4>
+             <p>Esta accion eliminara todas las tareas relacionadas con esta experiencia.</p>
+              
+              
+            </div>
+            <div class="modal-footer">
+              <form action="../conecta/elEx.php" method="post">
+              <input type="hidden" value="<?php echo $idExp ?>" name="id">
+              <input type="submit" value="Eliminar" class="btn btn-danger">
+              
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div><!-- fin modal eliminar-->
+      <!-- Modal para modificar categoria-->
+      <div class="modal fade" id="<?php echo $mod1 ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modificar Experiencia</h5>
+              
+            </div>
+            <div class="modal-body">
+             <?php
+            
+            $nombre=$filaExp[1];
+            $empresa=$filaExp[2];
+            $link=$filaExp[3];
+            $fecha_i=$filaExp[4];
+            $fecha_f=$filaExp[5];
+            $imgExp=$filaExp[6];
+
+              
+
+
+              ?>
+              <form enctype="multipart/form-data" action="../conecta/EditarCon.php" method="post">
+              <input type="hidden" value="<?php echo $idExp ?>" name="id">
+              <?php echo "<img class='ImgCon' src='data:image/jpeg;base64,".base64_encode($imgExp)."'/>" ?>
+              
+      
+        <label for="exampleFormControlFile1">Subir Imagen</label>
+        <input type="file" name="imagen" class="form-control-file" id="exampleFormControlFile1" required="">
+     
+
+        <br>
+        <label for="formGroupExampleInput2">Puesto</label>
+        <input type="text" class="form-control" name="puesto" value="<?php echo $nombre; ?>" maxlength="50" id="titulo" placeholder="Ingresar Puesto" required="">
+        <br>
+        <label for="formGroupExampleInput2">Empresa</label>
+        <input type="text" class="form-control" name="empresa" value="<?php echo $nombre; ?>" maxlength="50" id="titulo" placeholder="Ingresar Empresa" required="">
+        <br>
+
+        <label id="web" for="formGroupExampleInput2">Sitio web de la empresa</label>
+        <p style="color:red"><input type="checkbox" name="no_web" id="cbox1" value="no_web">La empresa no cuenta con sitio Web</p>
+        <input type="text" class="form-control" name="web" maxlength="50" id="web2" placeholder="Ingresar Sitio Web">
+        <br>
+        <p style="color:red"><input type="checkbox" name="no_fecha" id="cbox2" value="no_fecha">No agregar Fechas</p>
+        <label id="fecha1" for="formGroupExampleInput2">Fecha de inicio</label>
+        <input type="date" class="form-control" name="fecha_1" maxlength="50" id="fecha2" placeholder="Ingresar fecha inicio" >
+        <br>
+        <label id="fecha3" for="formGroupExampleInput2">Fecha de Termino</label>
+        <input type="date" class="form-control" name="fecha_2" maxlength="50" id="fecha4" placeholder="Ingresar fecha fin" >
+        
+        <label id="fecha5" for="formGroupExampleInput2">Ingresar una Fecha para ordenar contrologicamente esta experiencia</label>
+        <input type="date" class="form-control" name="fecha_3" maxlength="50" id="fecha6" placeholder="Ingresar fecha fin">
+
+            </div>
+            <div class="modal-footer">
+              <input class="btn btn-primary" type="submit"  value="Modificar"> 
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div><!-- fin modal Modificar-->
         <div class='col-12'>
         <br>
           <table class='ConBorde'>
@@ -224,7 +380,7 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
             </thead>
             <tbody>
               
-        ";
+        <?php
         
         $consultaDet = "SELECT * FROM t_tareas where C_Id_Laboral=$idExp";
         $resultadoDet=mysqli_query($mysqli,$consultaDet);
@@ -290,12 +446,12 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
 
 
 
-
+<br>
     <div class="CurFon col-12">
-      <center><h3>Educacion</h3>
-      <button class="activar2 btn btn-primary" id="mostrar2">Mostrar</button><button class="activar2 btn btn-primary" id="ocultar2">Ocultar</button></center>
+      <center>
+      <button class="activar2 btn btn-primary btn-lg btn-block" id="mostrar2">Mostrar Educacion</button><button class="activar2 btn btn-secondary btn-lg btn-block" id="ocultar2">Ocultar Educacion</button></center>
       <div id="e">
-
+      <center><h3>Educacion</h3></center>
                       <br>
       <?php 
       $consultaEd = "SELECT C_Id_Educacion, C_Carrera, C_Institucion, DATE_FORMAT(C_Fecha_I,'%d/%m/%Y'), DATE_FORMAT(C_Fecha_F,'%d/%m/%Y'), C_Img_Ed FROM t_educacion order by C_Fecha_F Desc";
@@ -364,7 +520,66 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
 <script src="main.js"></script>
+<script>
+$(document).ready(function() {
 
+$("#fecha5").hide();
+$("#fecha6").hide();
+  
+  $( '#cbox1' ).on( 'click', function() 
+  {
+    
+    if( $(this).is(':checked') )
+    {
+        
+        // Hacer algo si el checkbox ha sido seleccionado
+        
+        $("#web").hide();
+        $("#web2").hide();
+
+    } else {
+        
+        // Hacer algo si el checkbox ha sido deseleccionado
+        $("#web").show();
+        $("#web2").show();
+
+    }
+
+  });
+
+  $( '#cbox2' ).on( 'click', function() 
+  {
+    
+    if( $(this).is(':checked') )
+    {
+        
+        // Hacer algo si el checkbox ha sido seleccionado
+        
+        $("#fecha1").hide();
+        $("#fecha2").hide();
+        $("#fecha3").hide();
+        $("#fecha4").hide();
+        $("#fecha5").show();
+        $("#fecha6").show();
+
+
+    } else {
+        
+        // Hacer algo si el checkbox ha sido deseleccionado
+        $("#fecha1").show();
+        $("#fecha2").show();
+        $("#fecha3").show();
+        $("#fecha4").show();
+        $("#fecha5").hide();
+        $("#fecha6").hide();
+
+    }
+
+  });
+
+});
+
+</script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the

@@ -16,7 +16,7 @@ $resultImg = $fila['C_Img_Perfil'];
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Curriculum - Gabriel Veliz</title>
+  <title>Experiencia profesional y educación - Gabriel Esteban Véliz Zúñiga</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
@@ -121,7 +121,7 @@ $resultImg = $fila['C_Img_Perfil'];
 
 
     echo "<h4>".$nombre."</h4>";
-    if (is_null($link)) {
+    if (is_null($link) or empty($link)) {
       echo "<h5>".$empresa;
     }else
     {
@@ -138,7 +138,8 @@ $resultImg = $fila['C_Img_Perfil'];
     }
 
     echo " | ".$fecha_i;
-    if (is_null($fecha_i) or is_null($fecha_f)) {
+    
+    if (is_null($fecha_i) or is_null($fecha_f) ) {
       
     }else
     {

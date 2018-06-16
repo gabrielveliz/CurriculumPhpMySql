@@ -20,7 +20,7 @@ $resultImg = $fila['C_Img_Perfil'];
 <head>
   <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Inicio - Gabriel Veliz</title>
+  <title>Gabriel Esteban Véliz Zúñiga - Ingeniero de Ejecución en Informática</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 

@@ -14,6 +14,7 @@ body
     background-color: #E0E0E0;
     box-sizing: 100%;
 }
+
 .FotoPerfil
 {
     
@@ -22,6 +23,7 @@ body
     border: solid 2px rgba(0,150,136,0.3);
     margin: 2% 20% 2% 20%;
 }
+
 .titu > h1
 {
 	text-align: center;
@@ -94,7 +96,9 @@ body
     cursor: pointer;
     transition: 0.3s;
 }
+
 .fami:hover {opacity: 0.7;}
+
 .yo
 {
 	margin:auto;
@@ -104,10 +108,12 @@ body
 	border-radius: 10px;
 	padding: 20px;
 }
+
 .yo:hover
 {
 	box-shadow: 3px 3px 10px #FF5200;
 }
+
 .yo p
 {
 	text-align: center;
@@ -279,10 +285,12 @@ border-radius: 100%;
 	color: white;
 	font-size: 20px;
 }
+
 #ForTex1
 {
 	border: 0px solid black;
 }
+
 textarea
 {
 	height:100px;
@@ -300,6 +308,7 @@ header:hover
 {
 	box-shadow: 3px 3px 10px #FF5200;
 }
+
 header nav
 {
 	width: 100%;
@@ -308,12 +317,13 @@ header nav
 	margin-top: 0px;
 	
 }
+
 .menu_bar
 {
 	display: none;
 }
-header nav ul
 
+header nav ul
 {
 	overflow: hidden;
 	list-style: none;
@@ -333,6 +343,7 @@ header nav ul li a
 	display: block;
 	text-decoration: none;
 }
+
 header nav ul li span
 {
 	margin-right: 10px;
@@ -344,10 +355,12 @@ header nav ul li a:hover
 	background-color: #009688;
 	color: white;
 }
+
 meter
 {
 	padding-left: 10px;
 }
+
 .ingresar
 {	
 	display: block;
@@ -358,28 +371,33 @@ meter
 	background-color: rgba(0,0,0,0.8);
 	border-radius: 20px;
 }
+
 .ingresar label
 {
 	color: white;
 	text-shadow: 2px 2px 2px black;
 	font-size: 20px;
 }
+
 .ingresar h2,.ingresar p
 {
 	color: white;
 	text-align: center;
 	
 }
+
 .ingresar a
 {
 	color: white;
 	text-decoration: none;
 }
+
 .ingresar a:hover
 {
 	
 	color: white;
 }
+
 .ingresar .btn
 {	
 	display: block;

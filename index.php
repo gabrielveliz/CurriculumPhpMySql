@@ -1,3 +1,29 @@
+
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Gabriel Esteban Véliz Zúñiga - Ingeniero de Ejecución en Informática</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="icon" type="image/png" href="img/icon.png" />
+  <!-- Place favicon.ico in the root directory -->
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  
+</head>
+
+<body>
+    <!--[if lte IE 9]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
 <?php
 
 include 'conecta/conec.php';
@@ -14,30 +40,6 @@ $resulObjetivo = $fila['C_Objetivo'];
 $resultImg = $fila['C_Img_Perfil'];
 
 ?>
-<!doctype html>
-<html class="no-js" lang="">
-
-<head>
-  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Gabriel Esteban Véliz Zúñiga - Ingeniero de Ejecución en Informática</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-
-  <link rel="manifest" href="site.webmanifest">
-  <link rel="icon" type="image/png" href="img/icon.png" />
-  <!-- Place favicon.ico in the root directory -->
-
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/main.css">
-</head>
-
-<body>
-    <!--[if lte IE 9]>
-      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-    <![endif]-->
-
-    <!-- Add your site or application content here -->
   <div class="container-fluid contenedor2 conte1">
     
   
@@ -53,7 +55,7 @@ $resultImg = $fila['C_Img_Perfil'];
 
             <li><a href="curriculum.php" title="Curriculum"><span class="icon-file-text2"></span>Curriculum</a></li>
 
-            <li><a href="gv.php" title="Portafolio"><span class="icon-user-tie"></span>Sobre Mi</a></li>
+           
 
             <li><a href="contacto.php" title="Contacto"><span class="icon-phone"></span>Contacto</a></li>
             <li><a href="Curriculum-Vitae-Gabriel-Veliz.pdf" target="_blank" title="Curriculum Vitae"><span class="icon-cloud-download"></span>Descargar</a></li>

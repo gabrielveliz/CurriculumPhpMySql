@@ -14,6 +14,7 @@ $resultadoUser = $mysqli->query($consultaUser);
 
 //Guardamos el registro en la variable $fila
 $fila = $resultadoUser->fetch_assoc();
+$resulNombreUs = $fila['C_Nombre_Usuario'];
 $resulNombre = $fila['C_Nombre_Comp'];
 $resulIdTipo = $fila['C_Id_Tipo_Usu'];
 $resulImg = $fila['C_Img_Usu'];
@@ -40,6 +41,7 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
   <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
  <link rel="icon" type="image/png" href="img/control.png" />
 
   <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
@@ -147,7 +149,7 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
         <li><a href="index.php"><i class="fa icon-home2"></i> <span>Administrar</span></a></li>
         <li><a href="inicio.php"><i class="fa icon-pencil"></i> <span>Inicio</span></a></li>
         <li><a href="curriculum.php"><i class="fa icon-pencil"></i> <span>Curriculum</span></a></li>
-        <li><a href="gv.php"><i class="fa icon-pencil"></i> <span>Sobre Mi</span></a></li>
+        
         <li class="active"><a href="perfil.php"><i class="fa icon-user-tie"></i> <span>Perfil</span></a></li>
         <li><a href="usuarios.php"><i class="fa icon-user"></i> <span>Usuarios</span></a></li>
         
@@ -168,7 +170,93 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
       <!--------------------------
         | Your Page Content Here |
         -------------------------->
+        <center></center>
+        <br>
+<div class="col-12 col-md-4">
+      <div >
+       <?php 
+        echo '<img class="FotoPerfil" src="data:image/jpeg;base64,'.base64_encode($resulImg).'"/>';
+        ?>
+      </div>
+    </div>
+      <div class="col-12 ContPerfil">
 
+        <table class="table2">
+          <tr>
+            <th colspan="2"><center><p>Perfil</p></center></th>
+          </tr>
+          <tr>
+            <th><p>Nombre de Usuario :</p></th>
+            <th><p><?php echo $resulNombreUs ?></p></th>
+          </tr>
+          <tr>
+            <th><p>Nombre Completo : </p></th>
+            <th><p><?php echo $resulNombre ?></p></th>
+          </tr>
+          <tr>
+            <th><p>Tipo de Usuario :</p></th>
+            <th><p><?php echo $resultadoTipoNombre ?></p></th>
+          </tr>
+          <tr>
+            <th colspan="2"><center><p><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#datos">
+         Modificar
+        </button></p></center></th>
+          </tr>
+        </table>
+
+
+        <div class="modal fade" id="datos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modificar Datos de Usuario</h5>
+              
+            </div>
+            <div class="modal-body">
+
+              <form enctype="multipart/form-data" action="../conecta/EdUs.php" method="post">
+              <input type="hidden" value="<?php echo $IdUser ?>" name="id">
+              <?php echo "<img class='ImgCon' src='data:image/jpeg;base64,".base64_encode($resulImg)."'/>" ?>
+              
+      
+        <label for="exampleFormControlFile1">Subir Imagen</label>
+        <input type="file" name="imagen" class="form-control-file" id="exampleFormControlFile1" >
+     
+        <br>
+        <label for="formGroupExampleInput2">Usuario</label>
+        <input type="text" class="form-control" name="usuario" value="<?php echo $resulNombreUs; ?>" maxlength="50" id="titulo" placeholder="Ingresar Usuario" required="">
+        <br>
+        <label for="formGroupExampleInput2">Nombre completo</label>
+        <input type="text" class="form-control" name="nombre" value="<?php echo $resulNombre; ?>" maxlength="50" id="titulo" placeholder="Ingresar Nombre" required="">
+        <br>
+        <label for="formGroupExampleInput2">Contraseña Antigua</label>
+        <input type="text" class="form-control" name="cont_ant" value="" maxlength="50" id="titulo" placeholder="Ingresar Contraseña Antigua" required="">
+        <br>
+        <label for="formGroupExampleInput2">Contraseña Nueva</label>
+        <input type="text" class="form-control" name="cont_nu" value="" maxlength="50" id="titulo" placeholder="Ingresar Contraseña Nueva" required="">
+        <br>
+        <label for="formGroupExampleInput2">Repetir Contraseña</label>
+        <input type="text" class="form-control" name="cont_rep" value="" maxlength="50" id="titulo" placeholder="Ingresar Repetir Contraseña" required="">
+
+
+
+        
+
+            </div>
+            <div class="modal-footer">
+              <input class="btn btn-primary" type="submit"  value="Modificar"> 
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+         
+      </div>
+
+        
     </section>
     <!-- /.content -->
   </div>

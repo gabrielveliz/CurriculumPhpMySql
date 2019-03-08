@@ -148,7 +148,7 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
         <li><a href="index.php"><i class="fa icon-home2"></i> <span>Administrar</span></a></li>
         <li><a href="inicio.php"><i class="fa icon-pencil"></i> <span>Inicio</span></a></li>
         <li class="active"><a href="curriculum.php"><i class="fa icon-pencil"></i> <span>Curriculum</span></a></li>
-        <li><a href="gv.php"><i class="fa icon-pencil"></i> <span>Sobre Mi</span></a></li>
+        
         <li><a href="perfil.php"><i class="fa icon-user-tie"></i> <span>Perfil</span></a></li>
         <li><a href="usuarios.php"><i class="fa icon-user"></i> <span>Usuarios</span></a></li>
         
@@ -372,7 +372,7 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
 
         <div class='col-12'>
         <br>
-          <table class='ConBorde'>
+          <table class='ConBorde tabla1'>
           <center><h4>Tareas Realizadas</h4></center>
             <thead>
               <tr>
@@ -422,7 +422,7 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
 </table>
 <br>
 <center><h4>Agregar nueva tarea</h4></center>
-          <table class='ConBorde'>
+          <table class='ConBorde tabla1'>
           <tr>
             <th>Tarea</th>
              
@@ -521,18 +521,20 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
   </div>
                       <br>
       <?php 
-      $consultaEd = "SELECT C_Id_Educacion, C_Carrera, C_Institucion, DATE_FORMAT(C_Fecha_I,'%d/%m/%Y'), DATE_FORMAT(C_Fecha_F,'%d/%m/%Y'), C_Img_Ed FROM t_educacion order by C_Fecha_F Desc";
+      $consultaEd = "SELECT C_Id_Educacion, C_Carrera, C_Institucion, DATE_FORMAT(C_Fecha_I,'%d/%m/%Y'), DATE_FORMAT(C_Fecha_F,'%d/%m/%Y'), C_Img_Ed , DATE_FORMAT(C_Fecha_I,'%Y-%m-%d'), DATE_FORMAT(C_Fecha_F,'%Y-%m-%d') FROM t_educacion order by C_Fecha_F Desc";
       $resultadoEd=mysqli_query($mysqli,$consultaEd);
       while($filaEd=mysqli_fetch_row($resultadoEd))
       {
 
-
+        $idEdu=$filaEd[0];
         $nombreCa=$filaEd[1];
         $nombreInst=$filaEd[2];
         $fecha_i_Ed=$filaEd[3];
         $fecha_f_Ed=$filaEd[4];
         $imgEd=$filaEd[5];
-
+        $fecha_i_Ed2=$filaEd[6];
+        $fecha_f_Ed2=$filaEd[7];
+        $modEdu="modED".$idEdu;
         
 ?>
 
@@ -549,17 +551,84 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
         
         <p>Institucion: ".$nombreInst."</p>
 
-        <p>Fecha de Inicio: ".$fecha_i."</p>
-        <p>Fecha de Termino: ".$fecha_f."</p>
-        <input class='btn btn-warning' type='submit'  value='Modificar Estudio'>
-        <input class='btn btn-danger' type='submit'  value='Eliminar Estudio'>
+        <p>Fecha de Inicio: ".$fecha_i_Ed."</p>
+        <p>Fecha de Termino: ".$fecha_f_Ed."</p>
+        
+        <table>
+       <tr>
+      
+      <td>Opciones:
+      </td>
+      <td>
+        <button type='button' class='btn btn-warning' data-toggle='modal' data-target='#".$modEdu."'>
+         Modificar Educacion
+        </button>
+      </td>
+      <td>
+        <form action='../conecta/ElEdu.php' method='post' accept-charset='utf-8'>
+        <input type='hidden' value='".$idEdu."' name='id'>
+        <input class='btn btn-danger' type='submit'  value='Eliminar Educacion'>
+        </form>
+        </td>
+    </tr>
+    </table>
         </div>
+
+        
+        
 
     ";
     ?>
 
+<div class="modal fade" id="<?php echo $modEdu ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modificar Experiencia</h5>
+              
+            </div>
+            <div class="modal-body">
+              
+        <form enctype="multipart/form-data" action="../conecta/EditarEdu.php" method="post">
+        <input type="hidden" value="<?php echo$idEdu ?>" name="id">
+        <?php echo "<img class='ImgCon' src='data:image/jpeg;base64,".base64_encode($imgEd)."'/>" ?>
+              
+      
+        <label for="exampleFormControlFile1">Subir Imagen</label>
+        <input type="file" name="imagen" class="form-control-file" id="exampleFormControlFile1" >
+     
+
+        <br>
+        <label for="formGroupExampleInput2">Estudios</label>
+        <input type="text" class="form-control" name="estudio" value="<?php echo $nombreCa; ?>" maxlength="50" id="titulo" placeholder="Ingresar Estudios" required="">
+        <br>
+        <label for="formGroupExampleInput2">Institucion</label>
+        <input type="text" class="form-control" name="institucion" value="<?php echo$nombreInst; ?>" maxlength="50" id="titulo" placeholder="Ingresar Institucion" required="">
+        <br>
+
+        
+        <label id="fecha1" for="formGroupExampleInput2">Fecha de inicio</label>
+        <input type="date" class="form-control" name="fecha_1" value="<?php echo $fecha_i_Ed2; ?>" maxlength="50" id="fecha2" placeholder="Ingresar fecha inicio" >
+        <br>
+        <label id="fecha3" for="formGroupExampleInput2">Fecha de Termino</label>
+        <input type="date" class="form-control" name="fecha_2" value="<?php echo $fecha_f_Ed2; ?>" maxlength="50" id="fecha4" placeholder="Ingresar fecha fin" >
+        
+
+            </div>
+            <div class="modal-footer">
+              <input class="btn btn-primary" type="submit"  value="Modificar"> 
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
 
     </div> <!--Fin row  -->
+
+    
 <?php
       } //fin 1° while
 

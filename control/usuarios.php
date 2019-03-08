@@ -149,7 +149,7 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
         <li><a href="index.php"><i class="fa icon-home2"></i> <span>Administrar</span></a></li>
         <li><a href="inicio.php"><i class="fa icon-pencil"></i> <span>Inicio</span></a></li>
         <li><a href="curriculum.php"><i class="fa icon-pencil"></i> <span>Curriculum</span></a></li>
-        <li><a href="gv.php"><i class="fa icon-pencil"></i> <span>Sobre Mi</span></a></li>
+       
         <li><a href="perfil.php"><i class="fa icon-user-tie"></i> <span>Perfil</span></a></li>
         <li class="active"><a href="usuarios.php"><i class="fa icon-user"></i> <span>Usuarios</span></a></li>
         
@@ -174,7 +174,7 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
         <br>
     <div class="row">
       <div class="col-12">
-        <table class='ConBorde'>
+        <table class='ConBorde tabla1'>
           <tr>
             <th>Usuario</th>
             <th>Nombre</th>

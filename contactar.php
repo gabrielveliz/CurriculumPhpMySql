@@ -48,7 +48,7 @@ mail($recipient, $subject, $formcontent, $mailheader) or die("Error!");
 
             <li><a href="curriculum.php" title="Curriculum"><span class="icon-file-text2"></span>Curriculum</a></li>
 
-            <li><a href="gv.php" title="Portafolio"><span class="icon-user-tie"></span>Sobre Mi</a></li>
+           
 
             <li><a href="contacto.php" title="Contacto"><span class="icon-phone"></span>Contacto</a></li>
             <li><a href="Curriculum-Vitae-Gabriel-Veliz.pdf" target="_blank" title="Curriculum Vitae"><span class="icon-cloud-download"></span>Descargar</a></li>

@@ -159,7 +159,7 @@ $resultImg = $filaPerfil['C_Img_Perfil'];
         <li><a href="index.php"><i class="fa icon-home2"></i> <span>Administrar</span></a></li>
         <li class="active"><a href="inicio.php"><i class="fa icon-pencil"></i> <span>Inicio</span></a></li>
         <li><a href="curriculum.php"><i class="fa icon-pencil"></i> <span>Curriculum</span></a></li>
-        <li><a href="gv.php"><i class="fa icon-pencil"></i> <span>Sobre Mi</span></a></li>
+        
         <li><a href="perfil.php"><i class="fa icon-user-tie"></i> <span>Perfil</span></a></li>
         <li><a href="usuarios.php"><i class="fa icon-user"></i> <span>Usuarios</span></a></li>
         
@@ -410,7 +410,7 @@ inicio de tabla conocimiento
 
       <div class='col-12 col-md-8'>
                       
-          <table>
+          <table class="tabla1">
                           
           <?php
             $consultaCono2 = "SELECT * FROM t_conocimientos_detalle where C_Id_Conocimientos=$id order by C_Porcentaje desc";
@@ -456,7 +456,7 @@ inicio de tabla conocimiento
 
           <br>
           <h3>Agregar nuevo conocimiento</h3>
-          <table>
+          <table class="tabla1">
           <tr>
             <th>Conocimiento</th>
             <th>Porcentaje de conocimiento</th> 

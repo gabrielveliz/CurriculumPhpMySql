@@ -490,15 +490,27 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
         <label for="formGroupExampleInput2">Institucion</label>
         <input type="text" class="form-control" name="institucion" maxlength="50" id="titulo" placeholder="Ingresar Empresa" required="">
         <br>
+
          <label for="sel1">Seleccionar tipo de institucion</label>
           <select name="tipo" class="form-control" id="sel1">
-            <option value="1">Universidad</option>
-            <option value="2">Media</option>
-            <option value="3">Basica</option>
-            <option value="4">Otro</option>
-          </select>
-        <br>
 
+            <?php 
+      $consultatipousu = "SELECT * FROM t_tipo_inst order by C_Id_Tipo_Inst asc";
+      $resultadotipousu=mysqli_query($mysqli,$consultatipousu);
+      
+      while($filatipo=mysqli_fetch_row($resultadotipousu))
+      { $cont=1;
+
+
+          $idtipo=$filatipo[0];
+          $nombretipo=$filatipo[1];
+
+              ?><option value="<?php echo $idtipo; ?>"><?php echo $nombretipo; ?></option><?php
+          
+       } 
+       ?>      
+          </select>
+<br>
         
         <label id="fecha1" for="formGroupExampleInput2">Fecha de inicio</label>
         <input type="date" class="form-control" name="fecha_1" maxlength="50" id="fecha2" placeholder="Ingresar fecha inicio" >
@@ -521,7 +533,7 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
   </div>
                       <br>
       <?php 
-      $consultaEd = "SELECT C_Id_Educacion, C_Carrera, C_Institucion, DATE_FORMAT(C_Fecha_I,'%d/%m/%Y'), DATE_FORMAT(C_Fecha_F,'%d/%m/%Y'), C_Img_Ed , DATE_FORMAT(C_Fecha_I,'%Y-%m-%d'), DATE_FORMAT(C_Fecha_F,'%Y-%m-%d') FROM t_educacion order by C_Fecha_F Desc";
+      $consultaEd = "SELECT C_Id_Educacion, C_Carrera, C_Institucion, DATE_FORMAT(C_Fecha_I,'%d/%m/%Y'), DATE_FORMAT(C_Fecha_F,'%d/%m/%Y'), C_Img_Ed , DATE_FORMAT(C_Fecha_I,'%Y-%m-%d'), DATE_FORMAT(C_Fecha_F,'%Y-%m-%d') , C_Id_Tipo_Inst FROM t_educacion order by C_Fecha_F Desc";
       $resultadoEd=mysqli_query($mysqli,$consultaEd);
       while($filaEd=mysqli_fetch_row($resultadoEd))
       {
@@ -534,6 +546,7 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
         $imgEd=$filaEd[5];
         $fecha_i_Ed2=$filaEd[6];
         $fecha_f_Ed2=$filaEd[7];
+        $t=$filaEd[8];
         $modEdu="modED".$idEdu;
         
 ?>
@@ -606,6 +619,33 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
         <input type="text" class="form-control" name="institucion" value="<?php echo$nombreInst; ?>" maxlength="50" id="titulo" placeholder="Ingresar Institucion" required="">
         <br>
 
+         <label for="sel1">Seleccionar tipo de institucion</label>
+          <select name="tipo" class="form-control" id="sel1">
+
+            <?php 
+      $consultatipousu = "SELECT * FROM t_tipo_inst order by C_Id_Tipo_Inst asc";
+      $resultadotipousu=mysqli_query($mysqli,$consultatipousu);
+      
+      while($filatipo=mysqli_fetch_row($resultadotipousu))
+      { $cont=1;
+
+
+          $idtipo=$filatipo[0];
+          $nombretipo=$filatipo[1];
+
+          
+          if ($t==$idtipo) 
+          {
+            ?><option value="<?php echo $idtipo; ?>" selected><?php echo $nombretipo; ?></option><?php
+          }
+          if ($t!=$idtipo) 
+          {          
+              ?><option value="<?php echo $idtipo; ?>"><?php echo $nombretipo; ?></option><?php
+          }
+       } 
+       ?>      
+          </select>
+      <br>
         
         <label id="fecha1" for="formGroupExampleInput2">Fecha de inicio</label>
         <input type="date" class="form-control" name="fecha_1" value="<?php echo $fecha_i_Ed2; ?>" maxlength="50" id="fecha2" placeholder="Ingresar fecha inicio" >

@@ -4,6 +4,7 @@ include("conec.php");
 
     $id=$_POST['id'];
     $estudio=$_POST['estudio'];
+    $tipo=$_POST['tipo'];
     $inst=$_POST['institucion'];
     $fecha_i=$_POST['fecha_1'];
     $fecha_f=$_POST['fecha_2'];
@@ -22,10 +23,10 @@ include("conec.php");
             if ($_FILES["imagen"]["type"]=="image/jpeg"|| $_FILES["imagen"]["type"]=="image/jpg" || $_FILES["imagen"]["type"]=="image/png" )
             {
                 $imagen=addslashes(file_get_contents($imagen));
-                $editar="update t_educacion set C_Carrera='$estudio',C_Institucion='$inst',C_Fecha_I='$fecha_i', C_Fecha_F='$fecha_f',C_Img_Ed='$imagen' where C_Id_Educacion=$id";
+                $editar="update t_educacion set C_Carrera='$estudio',C_Institucion='$inst',C_Fecha_I='$fecha_i', C_Fecha_F='$fecha_f',C_Img_Ed='$imagen', C_Id_Tipo_Inst=$tipo where C_Id_Educacion=$id";
                 if (empty($fecha_i)) 
                 {
-                    $editar="update t_educacion set C_Carrera='$estudio',C_Institucion='$inst',C_Fecha_I='$fecha_i', C_Fecha_F='$fecha_f' where C_Id_Educacion=$id";
+                    $editar="update t_educacion set C_Carrera='$estudio',C_Institucion='$inst',C_Fecha_I='$fecha_i', C_Fecha_F='$fecha_f', C_Id_Tipo_Inst=$tipo where C_Id_Educacion=$id";
                 }
                 
                 
@@ -37,7 +38,7 @@ include("conec.php");
         }
         else
         {
-            $editar="update t_educacion set C_Carrera='$estudio',C_Institucion='$inst',C_Fecha_I='$fecha_i', C_Fecha_F='$fecha_f' where C_Id_Educacion=$id";
+            $editar="update t_educacion set C_Carrera='$estudio',C_Institucion='$inst',C_Fecha_I='$fecha_i', C_Fecha_F='$fecha_f', C_Id_Tipo_Inst=$tipo where C_Id_Educacion=$id";
         }
 
         $consulta = $mysqli->query($editar);

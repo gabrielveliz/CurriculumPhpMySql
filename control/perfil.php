@@ -230,13 +230,13 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
         <input type="text" class="form-control" name="nombre" value="<?php echo $resulNombre; ?>" maxlength="50" id="titulo" placeholder="Ingresar Nombre" required="">
         <br>
         <label for="formGroupExampleInput2">Contraseña Antigua</label>
-        <input type="text" class="form-control" name="cont_ant" value="" maxlength="50" id="titulo" placeholder="Ingresar Contraseña Antigua" required="">
+        <input type="password" class="form-control" name="cont_ant" value="" maxlength="50" id="titulo" placeholder="Ingresar Contraseña Antigua">
         <br>
         <label for="formGroupExampleInput2">Contraseña Nueva</label>
-        <input type="text" class="form-control" name="cont_nu" value="" maxlength="50" id="titulo" placeholder="Ingresar Contraseña Nueva" required="">
+        <input type="password" class="form-control" name="cont_nu" value="" maxlength="50" id="titulo" placeholder="Ingresar Contraseña Nueva">
         <br>
         <label for="formGroupExampleInput2">Repetir Contraseña</label>
-        <input type="text" class="form-control" name="cont_rep" value="" maxlength="50" id="titulo" placeholder="Ingresar Repetir Contraseña" required="">
+        <input type="password" class="form-control" name="cont_rep" value="" maxlength="50" id="titulo" placeholder="Ingresar Repetir Contraseña">
 
 
 

@@ -172,6 +172,72 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
         -------------------------->
         <center><h1>Lista de Usuarios</h1></center>
         <br>
+        <center><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ing">
+         Ingresar Nuevo Usuario
+        </button></center>
+        <br>
+        <div class="modal fade" id="ing" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Ingresar Usuario</h5>
+              
+            </div>
+            <div class="modal-body">
+          
+              <form enctype="multipart/form-data" action="../conecta/InUs.php" method="post">
+              
+        <label for="exampleFormControlFile1">Subir Imagen</label>
+        <input type="file" name="imagen" class="form-control-file" id="exampleFormControlFile1" >
+        <br>    
+        <label for="formGroupExampleInput2">Usuario</label>
+        <input type="text" class="form-control" name="usuario" value="" maxlength="50" id="titulo" placeholder="Ingresar usuario" required="">
+        <br>
+        <label for="formGroupExampleInput2">Nombre Completo</label>
+        <input type="text" class="form-control" name="nombre" value="" maxlength="50" id="titulo" placeholder="Ingresar nombre" required="">
+        <br>
+        <label for="formGroupExampleInput2">Contraseña</label>
+        <input type="password" class="form-control" name="cont" value="" maxlength="50" id="titulo" placeholder="Ingresar contraseña">
+        <label for="formGroupExampleInput2">Repetir Contraseña</label>
+        <input type="password" class="form-control" name="rep" value="" maxlength="50" id="titulo" placeholder="repetir contraseña">
+        <br>
+
+         <label for="sel1">Tipo de Usuario</label>
+          <select name="tipo" class="form-control" id="sel1">
+
+            <?php 
+      $consultatipousu = "SELECT * FROM t_tipo_usu order by C_Tipo asc";
+      $resultadotipousu=mysqli_query($mysqli,$consultatipousu);
+      
+      while($filatipo=mysqli_fetch_row($resultadotipousu))
+      {$cont=1;
+
+
+        $idtipo=$filatipo[0];
+        $nombretipo=$filatipo[1];
+
+      ?>
+            <option value="<?php echo $idtipo; ?>"><?php echo $nombretipo; ?></option>
+      <?php
+       } 
+       ?>      
+
+          </select>
+        <br>
+
+        
+
+            </div>
+            <div class="modal-footer">
+              <input class="btn btn-primary" type="submit"  value="Ingresar"> 
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div><!-- fin modal Modificar-->
+
+
     <div class="row">
       <div class="col-12">
         <table class='ConBorde tabla1'>
@@ -189,28 +255,349 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
         $consultaUser2 = "SELECT * FROM t_usu join t_tipo_usu on t_usu.C_Id_Tipo_Usu=t_tipo_usu.C_Id_Tipo_Usu";
         $resultadoUser2 = $mysqli->query($consultaUser2);
         while($filaUs=mysqli_fetch_row($resultadoUser2))
-        {
+        {   
+            $id_us=$filaUs[0];
             $nombreUs=$filaUs[1];
             $nombrePe=$filaUs[2];
+            $img=$filaUs[4];
+            $op=$filaUs[5];
             $tipo=$filaUs[7];
+            $mod_mod="mod_mod".$id_us;
+            $mod_el="mod_el".$id_us;
 
 
             echo "<tr>
                   <td>".$nombreUs."</td>
                   <td>".$nombrePe."</td>
                   <td>******</td>
-                  <td>".$tipo."</td>
-                  <td><input class='btn btn-warning' type='submit'  value='Modificar'></td>
-                <td><input class='btn btn-danger' type='submit'  value='Eliminar'></td> 
-
-                  </tr>
+                  <td>".$tipo."</td>";
+                  ?>
+        <td><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#<?php echo $mod_mod ?>">
+         Modificar 
+        </button></td>
+        <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#<?php echo $mod_el ?>">
+          Eliminar 
+        </button></td>
+                  <?php
+                  echo "</tr>
             ";
+
+        ?>
+        <!-- inicio modal eliminar-->
+        <div class="modal fade" id="<?php echo $mod_el ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Mensaje de Advertencia</h5>
+              
+            </div>
+            <div class="modal-body">
+              <?php echo "<img class='ImgCon' src='data:image/jpeg;base64,".base64_encode($img)."'/>" ?>
+             <h4>¿Está seguro que desea eliminar el usuario "<?php echo $nombreUs; ?>" de "<?php echo $nombrePe; ?>"?</h4>
+             
+              
+              
+            </div>
+            <div class="modal-footer">
+              <form action="../conecta/ElUs.php" method="post">
+              <input type="hidden" value="<?php echo $id_us ?>" name="id">
+              <input type="submit" value="Eliminar" class="btn btn-danger">
+              
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div><!-- fin modal eliminar-->
+      <!-- Modal para modificar categoria-->
+      <div class="modal fade" id="<?php echo $mod_mod ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modificar Usuario</h5>
+              
+            </div>
+            <div class="modal-body">
+          
+              <form enctype="multipart/form-data" action="../conecta/EdListUs.php" method="post">
+              <input type="hidden" value="<?php echo $id_us ?>" name="id">
+              <?php echo "<img class='ImgCon' src='data:image/jpeg;base64,".base64_encode($img)."'/>" ?>
+        <label for="exampleFormControlFile1">Subir Imagen</label>
+        <input type="file" name="imagen" class="form-control-file" id="exampleFormControlFile1" >
+        <br>  
+        <label for="formGroupExampleInput2">Usuario</label>
+        <input type="text" class="form-control" name="usuario" value="<?php echo $nombreUs; ?>" maxlength="50" id="titulo" placeholder="Ingresar Usuario" required="">
+        <br>
+        <label for="formGroupExampleInput2">Nombre Completo</label>
+        <input type="text" class="form-control" name="nombre" value="<?php echo $nombrePe; ?>" maxlength="50" id="titulo" placeholder="Ingresar Nombre" required="">
+        <br>
+        <label for="formGroupExampleInput2">Cambiar contraseña</label>
+        <input type="password" class="form-control" name="Nueva" value="" maxlength="50" id="titulo" placeholder="Nueva Contraseña">
+        <label for="formGroupExampleInput2">Repetir contraseña</label>
+        <input type="password" class="form-control" name="repetir" value="" maxlength="50" id="titulo" placeholder="Repetir Contraseña">
+        <br>
+
+         <label for="sel1">Tipo de Usuario</label>
+          <select name="tipo" class="form-control" id="sel1">
+
+            <?php 
+      $consultatipousu = "SELECT * FROM t_tipo_usu order by C_Tipo asc";
+      $resultadotipousu=mysqli_query($mysqli,$consultatipousu);
+      
+      while($filatipo=mysqli_fetch_row($resultadotipousu))
+      { $cont=1;
+
+
+          $idtipo=$filatipo[0];
+          $nombretipo=$filatipo[1];
+
+          if ($op==$idtipo) 
+          {
+              ?><option value="<?php echo $idtipo; ?>" selected><?php echo $nombretipo; ?></option><?php
+          }
+         if($op!=$idtipo)
+          {
+        
+             ?><option value="<?php echo $idtipo; ?>"><?php echo $nombretipo; ?></option><?php
+        
+          }
+       } 
+       ?>      
+          </select>
+        <br>
+
+        
+
+            </div>
+            <div class="modal-footer">
+              <input class="btn btn-primary" type="submit"  value="Modificar"> 
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div><!-- fin modal Modificar-->
+        <?php
         }
         mysqli_free_result($resultadoUser2);
 ?>
         </table>
       </div>
     </div>
+
+<!--*********************** Inicio seccion Tipos de usuario******************************************************-->
+<!--*********************** Inicio seccion Tipos de usuario******************************************************-->
+<!--*********************** Inicio seccion Tipos de usuario******************************************************-->
+<!--*********************** Inicio seccion Tipos de usuario******************************************************-->
+    <center><h1>Tipos de Usuarios</h1></center>
+
+    <br>
+        <center><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ingtipo">
+         Ingresar Nueva Categoria de Usuarios
+        </button></center>
+        <br>
+        <div class="modal fade" id="ingtipo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Ingresar Nueva Categoria</h5>
+              
+            </div>
+            <div class="modal-body">
+          
+              <form enctype="multipart/form-data" action="../conecta/InTipoUs.php" method="post">
+                  
+        <label for="formGroupExampleInput2">Nombre Categoria</label>
+        <input type="text" class="form-control" name="nombre" value="" maxlength="50" id="titulo" placeholder="Ingresar Nombre" required="">
+        
+        <br>
+
+         <label for="sel1">Ver Usuarios</label>
+          <select name="ver" class="form-control" id="sel1">
+            <option value="1">SI</option> 
+            <option value="2">NO</option>     
+          </select>
+        <br>
+        <label for="sel2">Modificar</label>
+          <select name="modificar" class="form-control" id="sel2">
+            <option value="1">SI</option> 
+            <option value="2">NO</option>     
+          </select>
+        <br>
+        <label for="sel3">Eliminar</label>
+          <select name="eliminar" class="form-control" id="sel3">
+            <option value="1">SI</option> 
+            <option value="2">NO</option>     
+          </select>
+        <br>
+
+        
+
+            </div>
+            <div class="modal-footer">
+              <input class="btn btn-primary" type="submit"  value="Ingresar"> 
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div><!-- fin modal Modificar-->
+
+
+     <div class="row">
+      <div class="col-12">
+        <table class='ConBorde tabla1'>
+          <tr>
+            <th>Nombre</th>
+            <th>Ver Lista Usuarios</th>
+            <th>Modificar</th>
+            <th>Eliminar</th>
+            <th>Opcion</th>
+            <th>Opcion</th>
+
+          </tr>
+
+    <?php 
+      $consultatipousu = "SELECT * FROM t_tipo_usu order by C_Tipo asc";
+      $resultadotipousu=mysqli_query($mysqli,$consultatipousu);
+      
+      while($filatipo=mysqli_fetch_row($resultadotipousu))
+      {
+          $idtipo=$filatipo[0];
+          $nombretipo=$filatipo[1];
+          $modificar=$filatipo[2];
+          $eliminar=$filatipo[3];
+          $ver=$filatipo[4];
+          $mod_ti1="modmod".$idtipo;
+          $mod_ti2="modmod2".$idtipo;
+
+          echo "<tr>
+                  <td>".$nombretipo."</td>
+                  <td>".$ver."</td>
+                  <td>".$modificar."</td>
+                  <td>".$eliminar."</td>";
+        
+
+      ?>
+       <td><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#<?php echo $mod_ti1 ?>">
+         Modificar 
+        </button></td>
+        <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#<?php echo $mod_ti2 ?>">
+          Eliminar 
+        </button></td>
+      </tr>
+<!-- inicio modal eliminar-->
+        <div class="modal fade" id="<?php echo $mod_ti2 ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Mensaje de Advertencia</h5>
+              
+            </div>
+            <div class="modal-body">
+             
+             <h4>¿Está seguro que desea eliminar el tipo de usuario "<?php echo $nombretipo; ?>" ?</h4>
+             <p style="color: red;">Esta accion eliminara todos los usuarios asociados a esta categoria.</p>
+             
+              
+              
+            </div>
+            <div class="modal-footer">
+              <form action="../conecta/ElTipoUs.php" method="post">
+              <input type="hidden" value="<?php echo $idtipo ?>" name="id">
+              <input type="submit" value="Eliminar" class="btn btn-danger">
+              
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div><!-- fin modal eliminar-->
+      <!-- Modal para modificar categoria-->
+      <div class="modal fade" id="<?php echo $mod_ti1 ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modificar tipo de Usuario</h5>
+              
+            </div>
+            <div class="modal-body">
+          
+              <form enctype="multipart/form-data" action="../conecta/EdTipoUs.php" method="post">
+              <input type="hidden" value="<?php echo $idtipo ?>" name="id">
+              
+        <label for="formGroupExampleInput2">Nombre</label>
+        <input type="text" class="form-control" name="nombre" value="<?php echo $nombretipo; ?>" maxlength="50" id="titulo" placeholder="Ingresar Usuario" required=""> 
+        <br>  
+        
+
+         <label for="sel1">Ver Usuarios</label>
+          <select name="ver" class="form-control" id="sel1">
+            
+            <?php if ($ver==1) {
+              echo "<option value='1' selected>SI</option>";
+              echo "<option value='2' >NO</option>";
+            }
+            else
+            {
+              echo "<option value='1' >SI</option>";
+              echo "<option value='2' selected>NO</option>";
+            }
+              ?>
+          </select>
+
+
+           <label for="sel2">Modificar</label>
+          <select name="modificar" class="form-control" id="sel2">
+            <?php if ($modificar==1) {
+              echo "<option value='1' selected>SI</option>";
+              echo "<option value='2' >NO</option>";
+            }
+            else
+            {
+              echo "<option value='1' >SI</option>";
+              echo "<option value='2' selected>NO</option>";
+            }
+              ?>
+          </select>
+
+
+           <label for="sel3">Eliminar</label> 
+          <select name="eliminar" class="form-control" id="sel3">
+            <?php if ($eliminar==1) {
+              echo "<option value='1' selected>SI</option>";
+              echo "<option value='2' >NO</option>";
+            }
+            else
+            {
+               echo "<option value='1' >SI</option>";
+               echo "<option value='2' selected>NO</option>";
+            }
+              ?>
+          </select>
+        <br>
+
+        
+
+            </div>
+            <div class="modal-footer">
+              <input class="btn btn-primary" type="submit"  value="Modificar"> 
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div><!-- fin modal Modificar-->
+        <?php } ?>
+
+      </table>
+    </div>
+  </div>
+
+
+
+
+
     </section>
     <!-- /.content -->
   </div>

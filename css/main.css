@@ -3,8 +3,6 @@
 
 *
 {
-	padding: 0;
-	margin: 0;
 	font-family: "Tahoma", "Geneva", sans-serif;
 }
 
@@ -12,9 +10,8 @@
 body
 {
     background-color: #E0E0E0;
-    box-sizing: 100%;
+    
 }
-
 .FotoPerfil
 {
     
@@ -23,7 +20,6 @@ body
     border: solid 2px rgba(0,150,136,0.3);
     margin: 2% 20% 2% 20%;
 }
-
 .titu > h1
 {
 	text-align: center;
@@ -96,9 +92,7 @@ body
     cursor: pointer;
     transition: 0.3s;
 }
-
 .fami:hover {opacity: 0.7;}
-
 .yo
 {
 	margin:auto;
@@ -108,12 +102,10 @@ body
 	border-radius: 10px;
 	padding: 20px;
 }
-
 .yo:hover
 {
 	box-shadow: 3px 3px 10px #FF5200;
 }
-
 .yo p
 {
 	text-align: center;
@@ -145,6 +137,7 @@ li
 {	
 	width: 100%;
 	box-sizing: 100%;
+	padding: 20px;
 	background-color: #E0E0E0;
 }
 
@@ -155,7 +148,7 @@ li
 	margin:  1% auto;
 	margin-bottom: 2%;
 	padding-left: 20px;
-	box-sizing: 100%;
+	
 	
 }
 .Cono:hover
@@ -285,12 +278,10 @@ border-radius: 100%;
 	color: white;
 	font-size: 20px;
 }
-
 #ForTex1
 {
 	border: 0px solid black;
 }
-
 textarea
 {
 	height:100px;
@@ -308,7 +299,6 @@ header:hover
 {
 	box-shadow: 3px 3px 10px #FF5200;
 }
-
 header nav
 {
 	width: 100%;
@@ -317,19 +307,16 @@ header nav
 	margin-top: 0px;
 	
 }
-
 .menu_bar
 {
 	display: none;
 }
-
 header nav ul
 {
 	overflow: hidden;
 	list-style: none;
-	margin-left: 10%;
+	margin-left: 20%;
 }
-
 header nav ul li
 {
 	float: left;
@@ -343,7 +330,6 @@ header nav ul li a
 	display: block;
 	text-decoration: none;
 }
-
 header nav ul li span
 {
 	margin-right: 10px;
@@ -355,12 +341,10 @@ header nav ul li a:hover
 	background-color: #009688;
 	color: white;
 }
-
 meter
 {
 	padding-left: 10px;
 }
-
 .ingresar
 {	
 	display: block;
@@ -371,33 +355,18 @@ meter
 	background-color: rgba(0,0,0,0.8);
 	border-radius: 20px;
 }
-
 .ingresar label
 {
 	color: white;
 	text-shadow: 2px 2px 2px black;
 	font-size: 20px;
 }
-
 .ingresar h2,.ingresar p
 {
 	color: white;
 	text-align: center;
 	
 }
-
-.ingresar a
-{
-	color: white;
-	text-decoration: none;
-}
-
-.ingresar a:hover
-{
-	
-	color: white;
-}
-
 .ingresar .btn
 {	
 	display: block;

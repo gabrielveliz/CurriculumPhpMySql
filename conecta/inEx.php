@@ -50,15 +50,10 @@ if (strcmp ($Check_Fecha , "no_fecha" ) == 0)
 //verificamos si las principales variables estan definidas
 if (empty($puesto) or empty($empresa)) 
 {
-	  header("location: ../control/curriculum.php");      	
+	     	
 }	    
 else
 {	
-	if (empty($fecha_i) and empty($fecha_f)) {
-		header("location: ../control/curriculum.php");  
-	}
-	else
-	{
 		if (is_uploaded_file($_FILES["imagen"]["tmp_name"]))
 	    {
 	    //Verifica si el el formato de la imagen es JPEG o JPG
@@ -77,16 +72,14 @@ else
 						$insertar="INSERT INTO t_laboral (C_Puesto, C_Empresa, C_Link, C_Fecha_I, C_Fecha_F, C_Img_laboral, C_Id_Tipo_Laboral) VALUES ('$puesto','$empresa','$web','$fecha_i','$fecha_f','$imagen',$tipo)";
 						$consulta = $mysqli->query($insertar);
 					}
-
-			            header("location: ../control/curriculum.php");
 	        }
 	    }
-	    else
-	    {
-	        
-	         header("location: ../control/curriculum.php");
-	    }
-	}
+	 
+	    
 }
+
+
+$mysqli->close();
+header("location: ../control/curriculum.php");
 
 ?>

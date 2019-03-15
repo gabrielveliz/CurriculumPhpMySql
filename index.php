@@ -17,13 +17,6 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
   
 </head>
-
-<body>
-    <!--[if lte IE 9]>
-      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-    <![endif]-->
-
-    <!-- Add your site or application content here -->
 <?php
 
 include 'conecta/conec.php';
@@ -40,7 +33,14 @@ $resulObjetivo = $fila['C_Objetivo'];
 $resultImg = $fila['C_Img_Perfil'];
 
 ?>
-  <div class="container-fluid contenedor2 conte1">
+<body>
+    <!--[if lte IE 9]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+
+  <div class="contenedor2 conte1">
     
   
       <header id="header" class="">
@@ -49,6 +49,7 @@ $resultImg = $fila['C_Img_Perfil'];
         </div>
         <nav>
 
+          
           <ul>
 
             <li><a href="index.php" title="Inicio"><span class="icon-home3"></span> Inicio</a></li>

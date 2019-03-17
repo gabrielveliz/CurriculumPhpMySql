@@ -21,11 +21,7 @@ include("conec.php");
         if(!$consulta){
            print("MySQLI Error:".mysqli_error($mysqli));
         }
-        //De lo contrario regresa al index
-        else{
-            $mysqli->close();
-            header("location: ../control/inicio.php");
-        }
+        
         }
     }
     else
@@ -34,10 +30,10 @@ include("conec.php");
         $editar="update t_perfil set C_Nombre='$nombre',C_Titulo_Pro='$titulo',C_Objetivo='$objetivo',C_Unive_Pro='$universidad' where C_Id_Perfil=1";
 
          $consulta = $mysqli->query($editar);
-         $mysqli->close();
-         header("location: ../control/inicio.php");
+         
     }
 
-
+$mysqli->close();
+header("location: ../control/inicio.php");
 
 ?>

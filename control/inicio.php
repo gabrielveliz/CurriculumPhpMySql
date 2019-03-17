@@ -436,7 +436,7 @@ inicio de tabla conocimiento
                               
                             <input type='hidden' value='".$iddeta."' name='id'>
                             <input type='text' value='".$nombre_detalle."' name='detalle' class='form-control-file' id='exampleFormControlFile1' required=''></td>";
-                            echo "<td><input type='text' value='".$porcentaje."' name='porcentaje' class='form-control-file' id='exampleFormControlFile2' required=''></td>";
+                            echo "<td><input type='text' value='".$porcentaje."' name='porcentaje' class='form-control-file' id='exampleFormControlFile2'></td>";
                             
                             echo "<td><input class='btn btn-warning' type='submit'  value='Modificar'></td>
                             </form>";

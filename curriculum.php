@@ -106,7 +106,7 @@ $resultImg = $fila['C_Img_Perfil'];
                   <center><h3>Experiencia profesional</h3></center>
                   <br>
 <?php 
-  $consultaExp = "SELECT C_Id_Laboral, C_Puesto, C_Empresa, C_Link,DATE_FORMAT(C_Fecha_I,'%d/%m/%Y'), DATE_FORMAT(C_Fecha_F,'%d/%m/%Y'), C_Img_Laboral FROM t_laboral order by C_Fecha_F Desc";
+  $consultaExp = "SELECT C_Id_Laboral, C_Puesto, C_Empresa, C_Link,DATE_FORMAT(C_Fecha_I,'%m/%Y'), DATE_FORMAT(C_Fecha_F,'%m/%Y'), C_Img_Laboral FROM t_laboral order by C_Fecha_F Desc";
   $resultadoExp=mysqli_query($mysqli,$consultaExp);
   while($filaExp=mysqli_fetch_row($resultadoExp))
   {
@@ -118,7 +118,12 @@ $resultImg = $fila['C_Img_Perfil'];
     $fecha_f=$filaExp[5];
     $imgExp=$filaExp[6];
 
-
+if ($fecha_i=="00/0000") {
+  $fecha_i=null;
+}
+if ($fecha_f=="12/9999") {
+  $fecha_f="Actualidad";
+}
 
     echo "<h4>".$nombre."</h4>";
     if (is_null($link) or empty($link)) {
@@ -139,7 +144,7 @@ $resultImg = $fila['C_Img_Perfil'];
 
     echo " | ".$fecha_i;
     
-    if (is_null($fecha_i) or is_null($fecha_f) ) {
+    if (is_null($fecha_i) or is_null($fecha_f)) {
       
     }else
     {

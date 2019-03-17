@@ -12,7 +12,7 @@ include("conec.php");
     
     if(empty($estudio) or empty($inst) or empty($fecha_i) or empty($fecha_f))
     {
-        header("location: ../control/curriculum.php");
+        
     }
     else
     {       
@@ -31,10 +31,7 @@ include("conec.php");
                 
                 
             }
-            else
-            {
-                header("location: ../control/curriculum.php");
-            }
+            
         }
         else
         {
@@ -42,10 +39,12 @@ include("conec.php");
         }
 
         $consulta = $mysqli->query($editar);
-        $mysqli->close();
-        header("location: ../control/curriculum.php");
+       
                 
          
     }
+
+$mysqli->close();
+header("location: ../control/curriculum.php");
 
 ?>

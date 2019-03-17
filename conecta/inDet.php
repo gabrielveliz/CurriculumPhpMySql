@@ -18,15 +18,13 @@ else
 		$insertar->bind_Param('sii', $detalle,$porcentaje,$idCo);
 		$insertar->execute();
 
-			header("location: ../control/inicio.php");
 		
 	}
-	else
-	{
-		header("location: ../control/inicio.php");
-	}
+
 	
 	
 }
 
+$mysqli->close();	
+header("location: ../control/inicio.php");
 ?>

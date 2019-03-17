@@ -12,7 +12,7 @@ $imagen=$_FILES["imagen"]["tmp_name"];
 
 	if(empty($puesto) or empty($empresa) or empty($fecha_f))
 	{
-		header("location: ../control/curriculum.php");
+		
 	}
     else
     {		
@@ -31,10 +31,7 @@ $imagen=$_FILES["imagen"]["tmp_name"];
 	        	
 	        	
 	        }
-	        else
-	        {
-	        	header("location: ../control/curriculum.php");
-	        }
+
 	    }
 	    else
 	    {
@@ -45,10 +42,10 @@ $imagen=$_FILES["imagen"]["tmp_name"];
 	    }
 
 	    $consulta = $mysqli->query($editar);
-	    $mysqli->close();
-	    header("location: ../control/curriculum.php");
+
 	        	
          
     }
-
+$mysqli->close();
+header("location: ../control/curriculum.php");
 ?>

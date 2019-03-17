@@ -27,6 +27,9 @@ else
   
 	}
 }
+
+
+$mysqli->close();
 header("location: ../control/usuarios.php");
 
 ?>

@@ -207,10 +207,12 @@ $resultadoTipoNombre=$fila2['C_Tipo'];
         <br>
         <p style="color:red"><input type="checkbox" name="no_fecha" id="cbox2" value="no_fecha">No agregar Fechas</p>
         <label id="fecha1" for="formGroupExampleInput2">Fecha de inicio</label>
-        <input type="date" class="form-control" name="fecha_1" maxlength="50" id="fecha2" placeholder="Ingresar fecha inicio" >
+        <input type="date" class="form-control" name="fecha_1" maxlength="50" id="fecha2" placeholder="Ingresar fecha inicio">
         <br>
+        <p style="color:red"><input type="checkbox" name="actual" id="cbox3" value="actual">Actualidad</p>
         <label id="fecha3" for="formGroupExampleInput2">Fecha de Termino</label>
         <input type="date" class="form-control" name="fecha_2" maxlength="50" id="fecha4" placeholder="Ingresar fecha fin" >
+
         
         <label id="fecha5" for="formGroupExampleInput2">Ingresar una Fecha para ordenar contrologicamente esta experiencia</label>
         <input type="date" class="form-control" name="fecha_3" maxlength="50" id="fecha6" placeholder="Ingresar fecha fin">
@@ -749,6 +751,29 @@ $("#fecha6").hide();
         $("#fecha4").show();
         $("#fecha5").hide();
         $("#fecha6").hide();
+
+    }
+
+  });
+
+  $( '#cbox3' ).on( 'click', function() 
+  {
+    
+    if( $(this).is(':checked') )
+    {
+        
+        // Hacer algo si el checkbox ha sido seleccionado
+        
+        $("#fecha3").hide();
+        $("#fecha4").hide();
+        
+
+    } else {
+        
+        // Hacer algo si el checkbox ha sido deseleccionado
+       $("#fecha3").show();
+       $("#fecha4").show();
+        
 
     }
 

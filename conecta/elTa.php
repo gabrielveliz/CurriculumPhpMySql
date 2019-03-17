@@ -14,9 +14,12 @@ else
 	$borrar->bind_Param('i',$id);
 	$borrar->execute();
 	
-	$mysqli->close();
+	
 	
 }
+
+
+$mysqli->close();
 header("location: ../control/curriculum.php");  
 
 ?>

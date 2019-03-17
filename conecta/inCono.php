@@ -22,16 +22,11 @@ $imagen=$_FILES["imagen"]["tmp_name"];
 		        if(!$consulta){
 		           print("MySQLI Error:".mysqli_error($mysqli));
 		        }
-		        //De lo contrario regresa al index
-		        else{
-		            header("location: ../control/inicio.php");
-		        }
+		        
         }
     }
-    else
-    {
-        
-         header("location: ../control/inicio.php");
-    }
 
+
+$mysqli->close();
+header("location: ../control/inicio.php");
 ?>

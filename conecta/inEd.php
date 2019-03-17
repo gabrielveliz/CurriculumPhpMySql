@@ -39,5 +39,6 @@ else
 		$consulta = $mysqli->query($insertar);   
 	}
 }
+$mysqli->close();
 header("location: ../control/curriculum.php");
 ?>

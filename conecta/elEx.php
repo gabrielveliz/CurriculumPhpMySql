@@ -5,7 +5,7 @@ include 'conec.php';
 $id=$_POST['id'];
 if (empty($id)) 
 {
-	  header("location: ../control/curriculum.php");      	
+	       	
 }	    
 else
 {	
@@ -19,9 +19,9 @@ else
 	$borrar->execute();
 
 	
-	$mysqli->close();
-	header("location: ../control/curriculum.php");
+	
 	
 }
-
+$mysqli->close();
+header("location: ../control/curriculum.php");
 ?>

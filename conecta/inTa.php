@@ -14,6 +14,6 @@ else
 		$insertar->bind_Param('si', $tarea,$idLaboral);
 		$insertar->execute();
 }
-
+$mysqli->close();
 header("location: ../control/curriculum.php");
 ?>

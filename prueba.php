@@ -47,7 +47,7 @@ include 'conecta/conec.php';
 
     div
     {
-      padding: 30px;
+      padding-left: 30px;
       
 
       width: 100%;
@@ -56,8 +56,9 @@ include 'conecta/conec.php';
   </style>
 </head>
 <body>
-  <p class="cop">Este documento fue generado con Html2Pdf</p>
+ 
   <div>
+    <p class="cop">Este documento fue generado con Html2Pdf</p>
 <?php
 $IdPerfil=1;
 $consultaPerfil = "SELECT * FROM t_perfil WHERE C_Id_Perfil = $IdPerfil";
@@ -122,7 +123,12 @@ echo "<br><h3 class='sub'>Experiencia Laboral</h3><table>";
     $fecha_f=$filaExp[5];
     $imgExp=$filaExp[6];
 
-
+if ($fecha_i=="00/0000") {
+  $fecha_i=null;
+}
+if ($fecha_f=="12/9999") {
+  $fecha_f="Actualidad";
+}
     echo "<tr>
     <td class='p1'><h4>  ".$fecha_i;
     
@@ -164,7 +170,7 @@ echo "</table><br><h3 class='sub'>Conocimientos</h3>
               $id=$filaCono[0];
               $nombre=$filaCono[1];
               echo "<tr>
-    <td class='p1'><h4>".$nombre."</h4></td>
+    <td class='p1'><h3>".$nombre."</h3></td>
     <td class='p2'>";
               $consultaCono2 = "SELECT * FROM t_conocimientos_detalle where C_Id_Conocimientos=$id";
               $resultadoCono2=mysqli_query($mysqli,$consultaCono2);
@@ -180,8 +186,7 @@ echo "</table><br><h3 class='sub'>Conocimientos</h3>
 
 echo "</table>";
 ?>
-<br><br><br>
-
+<p class="cop">Este documento fue generado con Html2Pdf</p>
 </div>
 </body>
 </html>

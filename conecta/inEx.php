@@ -6,6 +6,7 @@ $empresa=$_POST['empresa'];
 $web=$_POST['web'];
 $fecha_i=$_POST['fecha_1'];
 $fecha_f=$_POST['fecha_2'];
+$actual=$_POST['actual'];
 $imagen=$_FILES["imagen"]["tmp_name"];
 $tipo=1;
 
@@ -28,6 +29,15 @@ else
 	$Check_Fecha="";
 }
 
+if (isset($_POST['actual'])) 
+{
+	$Check_actual=$_POST['actual'];	
+}
+else
+{
+	$Check_actual="";
+}
+
 
 //vaciando la variable que guarda el link en caso que el checkbox se encuentre activo
 if (strcmp ($Check_Web , "no_web" ) == 0) 
@@ -45,6 +55,15 @@ if (strcmp ($Check_Fecha , "no_fecha" ) == 0)
 	$fecha_f=$_POST['fecha_3'];
 	$tipo=2;
 }
+if (strcmp ($Check_actual , "actual" ) == 0) 
+{
+	$fecha_f="30/12/9999";
+}
+
+
+echo $puesto." ".$empresa." ".$web." ".$fecha_i." ".$fecha_f." ".$actual." ".$tipo;
+
+
 
 
 //verificamos si las principales variables estan definidas
@@ -62,16 +81,10 @@ else
 	    
 			        $imagen=addslashes(file_get_contents($imagen));
 			        
-			        if ($Check_Fecha="no_fecha"){
-					
-						$insertar="INSERT INTO t_laboral (C_Puesto, C_Empresa, C_Link, C_Fecha_F, C_Img_laboral, C_Id_Tipo_Laboral) VALUES ('$puesto','$empresa','$web','$fecha_f','$imagen',$tipo)";
-						$consulta = $mysqli->query($insertar);
-					}
-					else
-					{
+			        
 						$insertar="INSERT INTO t_laboral (C_Puesto, C_Empresa, C_Link, C_Fecha_I, C_Fecha_F, C_Img_laboral, C_Id_Tipo_Laboral) VALUES ('$puesto','$empresa','$web','$fecha_i','$fecha_f','$imagen',$tipo)";
 						$consulta = $mysqli->query($insertar);
-					}
+					
 	        }
 	    }
 	 

@@ -15,6 +15,8 @@ else
 		$insertar->execute();
 
 }
+
+$mysqli->close();
 header("location: ../control/curriculum.php");
 
 ?>

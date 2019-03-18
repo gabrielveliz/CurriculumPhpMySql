@@ -206,98 +206,74 @@ $resultImg = $filaPerfil['C_Img_Perfil'];
       <br><?php echo $resulUniversidad ?></h4>
       <p>Objetivo: <br> <?php echo $resulObjetivo ?></p>
     </div>
+      <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modperfil">
+         Modificar perfil
+        </button>
 </div><!-- Fin contenedor Perfil -->
 
 </section>
 
+<!-- Modal para modificar categoria-->
+      <div class="modal fade" id="modperfil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modificar Perfil</h5>
+              
+            </div>
+            <div class="modal-body">
+          
+    <form enctype="multipart/form-data" action="../conecta/EdListUs.php" method="post">
+    <input type="hidden" value="<?php echo $id_us ?>" name="id">
+    <?php echo "<img class='ImgCon' src='data:image/jpeg;base64,".base64_encode($resultImg)."'/>" ?>
+    <form class="formuperfil" enctype="multipart/form-data" action="../conecta/EditarPerfil.php" method="post">
 
-
-
-<section class="content container-fluid" id="perfil" >
-<div class="col-12 ">
-
-  <div class="col-12 col-md-12">
-    <h1>Modificar Perfil Inicio</h1>
-  </div>
-
-  <form class="formuperfil" enctype="multipart/form-data" action="../conecta/EditarPerfil.php" method="post">
-    <div class="form-group col-12 col-md-12">
       <label for="exampleFormControlFile1">Subir Imagen</label>
       <input type="file" name="imagen" class="form-control-file" id="exampleFormControlFile1">
-    </div>
 
-    <div class="form-group col-12 col-md-12">
+<br>
+
       <label for="formGroupExampleInput">Nombre Completo</label>
       <input type="text" class="form-control" name="nombre" maxlength="50" value="<?php echo $NombrePerfil ?>" id="nombre" placeholder="Ingresar nombre" required="">
       <div id="cajanombre">
       </div>
-    </div>
 
-    <div class="row form-group col-12 col-md-6">
+
+
       <label for="formGroupExampleInput2">Titulo Profesional</label>
       <input type="text" class="form-control" name="titulo" maxlength="50" value="<?php echo $resulTitulo ?>" id="titulo" placeholder="Ingresar Titulo">
       <div id="cajatitulo">
       </div>
-    </div>
 
-    <div class="form-group col-12 col-md-6">
+
+
       <label for="formGroupExampleInput2">Universidad</label>
       <input type="text" class="form-control" maxlength="50" name="universidad" value="<?php echo $resulUniversidad ?>" id="universidad" placeholder="Ingresar Titulo">
       <div id="cajauniversidad">
       </div>
-    </div>
 
-    <div class="form-group col-12 col-md-12">
+
+
       <label for="exampleFormControlTextarea1">Objetivo</label>
       <textarea class="form-control" value="" maxlength="500" id="objetivo" name="objetivo" rows="3" required=""><?php echo $resulObjetivo ?></textarea>
       <div id="cajaobjetivo">
       </div>
-    </div>
-
-    <div class="col-12 col-md-12">
-      <input class="btn btn-primary" type="submit"  value="Guardar Informacion Perfil">  
-    </div>
-  </form>
-
-</div>
 
 
-</section>
 
-<section class="content container-fluid" id="nueva_categoria">
+        
 
-<!---
-inicio de tabla conocimiento
--->
+            </div>
+            <div class="modal-footer">
+              <input class="btn btn-primary" type="submit"  value="Modificar"> 
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div><!-- fin modal Modificar-->
+  
 
-<div class="containe3 col-12">
-
-  <h2>Nueva categoria de Conocimientos</h2>
-
-  <div class="row">
-
-    <form enctype="multipart/form-data" action="../conecta/inCono.php" method="post">
-
-      <div class="form-group co-12 col-md-12">
-        <label for="exampleFormControlFile1">Subir Imagen</label>
-        <input type="file" name="imagen" class="form-control-file" id="exampleFormControlFile1" required="">
-      </div>
-
-      <div class="form-group col-12 col-md-6">
-        <label for="formGroupExampleInput2">Nombre de Categoria</label>
-        <input type="text" class="form-control" name="conocimiento" maxlength="50" id="titulo" placeholder="Ingresar Nombre" required="">
-      </div>
-
-      <div class="col-12 col-md-12">
-        <input class="btn btn-primary" type="submit"  value="Agregar">  
-      </div>
-
-    </form>
-  </div>
-
-</div>
-
-</section>
 
 
 
@@ -306,7 +282,43 @@ inicio de tabla conocimiento
 <div class="containe col-12">
 
     <h1>Conocimientos</h1>
+    <div class='row Con'>
+    <center><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#nuevacat">
+        Agregar Nueva Categoria
+        </button></center>
+      </div>
 
+<!-- Modal para modificar categoria-->
+      <div class="modal fade" id="nuevacat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Nueva Categoria</h5>
+              
+            </div>
+            <div class="modal-body">
+              <form enctype="multipart/form-data" action="../conecta/inCono.php" method="post">
+
+
+        <label for="exampleFormControlFile1">Subir Imagen</label>
+        <input type="file" name="imagen" class="form-control-file" id="exampleFormControlFile1" required="">
+<br>
+
+
+        <label for="formGroupExampleInput2">Nombre de Categoria</label>
+        <input type="text" class="form-control" name="conocimiento" maxlength="50" id="titulo" placeholder="Ingresar Nombre" required="">
+
+
+
+            </div>
+            <div class="modal-footer">
+              <input class="btn btn-primary" type="submit"  value="Modificar"> 
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div><!-- fin modal Modificar-->
 
     <?php 
     $consultaCono = "SELECT * FROM t_conocimientos";
